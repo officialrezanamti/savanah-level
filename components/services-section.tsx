@@ -8,10 +8,10 @@ export function ServicesSection() {
           <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
             What We Do
           </p>
-          <h2 className="text-balance text-left font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-balance text-left md:text-center font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             Every home project, handled by one trusted crew
           </h2>
-          <p className="text-pretty text-base leading-relaxed text-muted-foreground text-left">
+          <p className="text-pretty text-base leading-relaxed text-muted-foreground text-left md:text-center">
             From mounting your TV to installing appliances and assembling
             furniture, we take care of the setup so you can enjoy your home.
           </p>
