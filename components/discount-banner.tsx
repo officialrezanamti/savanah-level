@@ -6,7 +6,7 @@ export function DiscountBanner() {
   return (
     <section className="bg-background pb-4">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="reveal relative flex flex-col items-center gap-5 overflow-hidden rounded-3xl bg-navy px-6 py-8 text-center text-white sm:flex-row sm:justify-between sm:px-10 sm:text-left">
+        <div className="brand-gradient reveal relative flex flex-col items-center gap-5 overflow-hidden rounded-3xl px-6 py-8 text-center text-white sm:flex-row sm:justify-between sm:px-10 sm:text-left">
           <div
             className="pointer-events-none absolute inset-y-0 right-0 hidden w-72 bg-orange/90 lg:block [clip-path:polygon(38%_0,100%_0,100%_100%,0_100%)]"
             aria-hidden="true"

@@ -6,26 +6,22 @@ export function Hero() {
   return (
     <section id="home" className="relative isolate overflow-hidden bg-navy">
       <img
-        src="/images/savannah-hero.png"
-        alt="The Talmadge Memorial Bridge over the Savannah River at golden hour"
+        src="/images/savannah-river-bridge.jpg"
+        alt="The Talmadge Memorial Bridge over the Savannah River with a riverboat docked in the foreground"
         className="absolute inset-0 -z-10 size-full object-cover"
       />
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/90 to-navy/50"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-navy via-navy/20 to-transparent"
+        className="brand-gradient-overlay absolute inset-0 -z-10"
         aria-hidden="true"
       />
 
-      {/* Bold diagonal split panels (desktop) — orange edge line behind solid navy */}
+      {/* Bold diagonal split panels (desktop) — orange edge line behind the brand gradient panel */}
       <div
         className="absolute inset-y-0 left-0 -z-10 hidden w-[63%] bg-orange lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-y-0 left-0 -z-10 hidden w-[62%] bg-navy lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
+        className="brand-gradient absolute inset-y-0 left-0 -z-10 hidden w-[62%] lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
         aria-hidden="true"
       />
 
