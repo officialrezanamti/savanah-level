@@ -3,7 +3,7 @@ import { site } from '@/data/site'
 
 export function MobileCtaBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-navy/90 p-3 backdrop-blur-md lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 p-3 backdrop-blur-md lg:hidden">
       <a
         href={site.phoneHref}
         className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-orange font-heading text-sm font-bold text-orange-foreground shadow-lg"
