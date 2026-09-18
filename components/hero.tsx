@@ -55,8 +55,7 @@ export function Hero() {
               Contact Us Today To Get A Free Estimate
             </span>
             <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
-              Fully Licensed &amp; Insured Home Services in Savannah, GA —
-              Specializing in TV Mounting, Appliance Installation &amp; More
+              Savannah Level is a Fully Licensed &amp; Insured Handyman Company with 27+ Years of Experience Serving Savannah, GA
             </h1>
             <p className="max-w-md text-pretty text-base leading-relaxed text-white/75">
               {site.areas}
