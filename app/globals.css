@@ -148,8 +148,9 @@ html {
 .brand-gradient-card {
   background-image: linear-gradient(
     100deg,
-    var(--navy-900) 0%,
-    var(--blue-700) 50%,
+    oklch(0.7 0.18 45) 0%,
+    var(--navy-900) 52%,
+    var(--blue-700) 80%,
     var(--blue-400) 100%
   );
   
