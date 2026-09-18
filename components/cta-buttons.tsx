@@ -51,7 +51,7 @@ export function EstimateButton({
       className={cn(
         base,
         sizes[size],
-        'bg-green text-green-foreground shadow-lg shadow-green/25 hover:brightness-110 focus-visible:ring-green',
+        'bg-orange text-orange-foreground shadow-lg shadow-orange/25 hover:brightness-105 hover:shadow-orange/40 focus-visible:ring-orange',
         className,
       )}
     >

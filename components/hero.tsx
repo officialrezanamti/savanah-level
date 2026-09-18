@@ -19,13 +19,23 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* Bold diagonal split panels (desktop) — orange edge line behind solid navy */}
+      <div
+        className="absolute inset-y-0 left-0 -z-10 hidden w-[63%] bg-orange lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-y-0 left-0 -z-10 hidden w-[62%] bg-navy lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
+        aria-hidden="true"
+      />
+
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pb-12 pt-10 sm:px-6 lg:grid lg:grid-cols-2 lg:gap-12 lg:pb-20 lg:pt-16">
         <div className="flex flex-col gap-3 lg:col-start-1 lg:row-start-1">
           <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
             {site.tagline}
           </p>
           <div className="flex flex-col gap-1">
-            <span className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+            <span className="font-heading text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
               {site.name}
             </span>
             <span className="text-sm font-medium text-white/70">
@@ -45,10 +55,10 @@ export function Hero() {
 
         <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-2">
           <div className="flex flex-col gap-4">
-            <span className="inline-flex w-fit items-center rounded-full border border-orange/40 bg-orange/15 px-3 py-1 text-xs font-semibold text-orange">
+            <span className="inline-flex w-fit items-center rounded-full border border-blue/40 bg-blue/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue">
               Contact Us Today To Get A Free Estimate
             </span>
-            <h1 className="max-w-xl text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+            <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
               Fully Licensed &amp; Insured Home Services in Savannah, GA —
               Specializing in TV Mounting, Appliance Installation &amp; More
             </h1>

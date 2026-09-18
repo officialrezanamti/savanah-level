@@ -43,6 +43,8 @@
   --color-orange-foreground: var(--orange-foreground);
   --color-green: var(--green);
   --color-green-foreground: var(--green-foreground);
+  --color-blue: var(--blue);
+  --color-blue-foreground: var(--blue-foreground);
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-archivo);
@@ -89,6 +91,8 @@
   --orange-foreground: oklch(0.99 0.01 80);
   --green: oklch(0.45 0.08 160);
   --green-foreground: oklch(0.98 0.01 160);
+  --blue: oklch(0.62 0.16 250);
+  --blue-foreground: oklch(0.99 0.005 250);
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.24 0.03 255);

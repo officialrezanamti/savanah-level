@@ -22,7 +22,7 @@ export function ContactSection() {
             <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
               Free Estimate
             </p>
-            <h2 className="text-balance font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-balance font-heading text-3xl font-black tracking-tight text-white sm:text-4xl">
               Let&apos;s get your project on the calendar
             </h2>
             <p className="max-w-md text-pretty leading-relaxed text-white/75">
