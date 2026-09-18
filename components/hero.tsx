@@ -8,7 +8,7 @@ export function Hero() {
       <img
         src="/images/savannah-river-bridge.jpg"
         alt="The Talmadge Memorial Bridge over the Savannah River with a riverboat docked in the foreground"
-        className="absolute inset-0 -z-10 size-full object-cover"
+        className="absolute lg:left-170 inset-0 -z-10 size-full object-cover"
       />
       <div
         className="brand-gradient-overlay absolute inset-0 -z-10"
@@ -27,7 +27,7 @@ export function Hero() {
 
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pb-12 pt-10 sm:px-6 lg:grid lg:grid-cols-2 lg:gap-12 lg:pb-20 lg:pt-16">
         <div className="flex flex-col gap-3 lg:col-start-1 lg:row-start-1">
-          <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
+          <p className="font-heading text-s font-bold uppercase tracking-[0.2em] text-orange">
             {site.tagline}
           </p>
           <div className="flex flex-col gap-1">
