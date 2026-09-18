@@ -13,7 +13,7 @@ export function MobileCtaBar() {
       </a>
       <a
         href="#contact"
-        className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-green font-heading text-sm font-bold text-green-foreground shadow-lg"
+        className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full brand-gradient-btn font-heading text-sm font-bold text-green-foreground shadow-lg"
       >
         Get an Estimate
         <ArrowRight className="size-4" aria-hidden="true" />
