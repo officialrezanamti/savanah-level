@@ -145,6 +145,14 @@ html {
     var(--blue-400) 100%
   );
 }
+.brand-gradient-card {
+  background-image: linear-gradient(
+    35deg,
+    var(--navy-900) 0%,
+    var(--blue-700) 50%,
+    var(--blue-400) 100%
+  );
+}
 
 /* Hero photo overlay: navy -> mid -> bright fading toward white at the far
    edge so the river/bridge photo stays visible and headline text readable. */
