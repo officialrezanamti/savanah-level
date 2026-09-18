@@ -1,16 +1,31 @@
-export default function Home() {
+import { SiteHeader } from '@/components/site-header'
+import { Hero } from '@/components/hero'
+import { TrustBar } from '@/components/trust-bar'
+import { ServicesSection } from '@/components/services-section'
+import { DiscountBanner } from '@/components/discount-banner'
+import { AboutSection } from '@/components/about-section'
+import { GallerySection } from '@/components/gallery-section'
+import { ReviewsSection } from '@/components/reviews-section'
+import { ContactSection } from '@/components/contact-section'
+import { SiteFooter } from '@/components/site-footer'
+import { MobileCtaBar } from '@/components/mobile-cta-bar'
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            savanah
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
+    <>
+      <SiteHeader />
+      <main className="pb-20 lg:pb-0">
+        <Hero />
+        <TrustBar />
+        <ServicesSection />
+        <DiscountBanner />
+        <AboutSection />
+        <GallerySection />
+        <ReviewsSection />
+        <ContactSection />
       </main>
-    </div>
-  );
+      <SiteFooter />
+      <MobileCtaBar />
+    </>
+  )
 }

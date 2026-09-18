@@ -1,0 +1,70 @@
+import { site } from '@/data/site'
+import { CallButton, EstimateButton } from '@/components/cta-buttons'
+import { ServiceGrid } from '@/components/service-grid'
+
+export function Hero() {
+  return (
+    <section id="home" className="relative isolate overflow-hidden bg-navy">
+      <img
+        src="/images/savannah-hero.png"
+        alt="The Talmadge Memorial Bridge over the Savannah River at golden hour"
+        className="absolute inset-0 -z-10 size-full object-cover"
+      />
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/90 to-navy/50"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-navy via-navy/20 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pb-12 pt-10 sm:px-6 lg:grid lg:grid-cols-2 lg:gap-12 lg:pb-20 lg:pt-16">
+        <div className="flex flex-col gap-3 lg:col-start-1 lg:row-start-1">
+          <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
+            {site.tagline}
+          </p>
+          <div className="flex flex-col gap-1">
+            <span className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              {site.name}
+            </span>
+            <span className="text-sm font-medium text-white/70">
+              {site.positioning}
+            </span>
+          </div>
+        </div>
+
+        <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
+          <div className="rounded-2xl border border-white/15 bg-white/95 p-4 shadow-2xl backdrop-blur sm:p-5">
+            <p className="mb-3 font-heading text-sm font-bold text-navy">
+              What can we help you set up?
+            </p>
+            <ServiceGrid variant="selector" />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-2">
+          <div className="flex flex-col gap-4">
+            <span className="inline-flex w-fit items-center rounded-full border border-orange/40 bg-orange/15 px-3 py-1 text-xs font-semibold text-orange">
+              Contact Us Today To Get A Free Estimate
+            </span>
+            <h1 className="max-w-xl text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+              Fully Licensed &amp; Insured Home Services in Savannah, GA —
+              Specializing in TV Mounting, Appliance Installation &amp; More
+            </h1>
+            <p className="max-w-md text-pretty text-base leading-relaxed text-white/75">
+              {site.areas}
+            </p>
+          </div>
+
+          <div className="hidden flex-wrap gap-3 lg:flex">
+            <CallButton size="lg" />
+            <div className="group">
+              <EstimateButton size="lg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
