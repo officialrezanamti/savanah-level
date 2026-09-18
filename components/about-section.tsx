@@ -10,7 +10,7 @@ export function AboutSection() {
           <img
             src="/images/gallery-tv-mount.png"
             alt="A clean, level TV installation completed by Savannah Level"
-            className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl"
+            className="aspect-4/3 w-full rounded-3xl object-cover shadow-xl"
           />
         </div>
 
