@@ -18,8 +18,8 @@ export function Logo({
       className={cn('group inline-flex items-center gap-2.5', className)}
     >
       <span className="relative grid size-10 place-items-center rounded-full bg-white shadow-sm ring-1 ring-navy/10">
-       
-       <Image width={100} height={100}  />
+
+        <Image width={100} height={100} alt="savannah level logo" src="/images/logo/Logo-Savannah-Level.png" />
       </span>
       <span className="flex flex-col leading-none">
         <span
