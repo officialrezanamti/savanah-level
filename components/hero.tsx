@@ -42,7 +42,7 @@ export function Hero() {
 
         <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
           <div className="rounded-2xl brand-gradient-card border border-white/15 bg-white/95 p-4 shadow-2xl backdrop-blur sm:p-5">
-            <p className="mb-3 font-heading text-sm font-bold text-navy">
+            <p className="mb-3 font-heading text-sm font-bold text-white">
               What can we help you set up?
             </p>
             <ServiceGrid variant="selector" />

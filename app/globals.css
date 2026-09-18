@@ -147,11 +147,12 @@ html {
 }
 .brand-gradient-card {
   background-image: linear-gradient(
-    35deg,
+    100deg,
     var(--navy-900) 0%,
     var(--blue-700) 50%,
     var(--blue-400) 100%
   );
+  
 }
 
 /* Hero photo overlay: navy -> mid -> bright fading toward white at the far
