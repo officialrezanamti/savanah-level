@@ -16,7 +16,7 @@ export function DiscountBanner() {
               <BadgeCheck className="size-6" aria-hidden="true" />
             </span>
             <div className="flex flex-col gap-1">
-              <p className="font-heading text-xl font-black tracking-tight sm:text-2xl">
+              <p className="font-heading text-xl text-left font-black tracking-tight sm:text-2xl">
                 {site.discount}
               </p>
               <p className="text-sm font-medium text-white/70">

@@ -4,7 +4,7 @@ import { CallButton, EstimateButton } from '@/components/cta-buttons'
 
 export function AboutSection() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className=" py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div className="reveal order-2 lg:order-1">
           <img
