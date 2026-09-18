@@ -51,7 +51,7 @@ export function Hero() {
 
         <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-2">
           <div className="flex flex-col gap-4">
-            <span className="inline-flex w-fit items-center rounded-full border border-blue/40 bg-blue/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue">
+            <span className="inline-flex w-fit items-center rounded-full border border-blue/40 bg-white md:bg-blue/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue">
               Contact Us Today To Get A Free Estimate
             </span>
             <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
