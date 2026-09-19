@@ -22,10 +22,10 @@ export function SiteFooter() {
               <Mail className="size-4 text-orange" aria-hidden="true" />
               {site.email}
             </a>
-            <span className="flex items-center gap-2">
+            <a href='https://www.google.com/maps/place/Savannah+Level/@32.062721,-81.20604,9z/data=!4m6!3m5!1s0x8fbf57004b808cd5:0xf9ab3f462397e678!8m2!3d32.062721!4d-81.2060396!16s%2Fg%2F11x6dp92yr?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D' target='_blank' className="flex items-center gap-2">
               <MapPin className="size-4 text-orange" aria-hidden="true" />
               {site.address}
-            </span>
+            </a>
           </div>
         </div>
 
