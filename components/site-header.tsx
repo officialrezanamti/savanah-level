@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Menu, Phone, X } from 'lucide-react'
 import { nav, site } from '@/data/site'
 import { Logo } from '@/components/logo'
@@ -14,15 +15,25 @@ export function SiteHeader() {
         <Logo />
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.href.startsWith('/') ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              >
+                {item.label}
+              </a>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -56,16 +67,27 @@ export function SiteHeader() {
           className="border-t border-white/10 bg-navy px-4 pb-4 pt-2 lg:hidden"
           aria-label="Mobile"
         >
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="block rounded-lg px-3 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.href.startsWith('/') ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              >
+                {item.label}
+              </a>
+            ),
+          )}
           <a
             href="#contact"
             onClick={() => setOpen(false)}
