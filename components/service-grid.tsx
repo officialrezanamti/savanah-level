@@ -5,10 +5,16 @@ import { cn } from '@/lib/utils'
 export function ServiceGrid({
   variant = 'detailed',
   className,
+  excludeSlug,
 }: {
   variant?: 'selector' | 'detailed'
   className?: string
+  excludeSlug?: string
 }) {
+  const visibleServices = excludeSlug
+    ? services.filter((service) => service.slug !== excludeSlug)
+    : services
+
   return (
     <div
       className={cn(
@@ -18,7 +24,7 @@ export function ServiceGrid({
         className,
       )}
     >
-      {services.map((service) => (
+      {visibleServices.map((service) => (
         <ServiceCard key={service.slug} service={service} variant={variant} />
       ))}
     </div>

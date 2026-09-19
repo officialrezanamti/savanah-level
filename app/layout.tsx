@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Inter } from 'next/font/google'
+import { EstimateModalProvider } from '@/components/estimate-modal'
 import './globals.css'
 
 const archivo = Archivo({
@@ -63,7 +64,7 @@ export default function RootLayout({
       className={`light bg-background ${archivo.variable} ${inter.variable}`}
     >
       <body className="font-sans antialiased">
-        {children}
+        <EstimateModalProvider>{children}</EstimateModalProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

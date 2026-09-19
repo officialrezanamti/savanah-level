@@ -71,6 +71,47 @@ export default async function ServicePage({
         </section>
 
         <section className="bg-background py-14 sm:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <h2 className="mb-6 font-heading text-2xl font-bold text-foreground">
+              Pricing
+            </h2>
+            {service.estimateOnly ? (
+              <div className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-card p-6 sm:p-8">
+                <p className="text-pretty leading-relaxed text-muted-foreground">
+                  Every home maintenance job is different, so pricing depends
+                  on the scope of work. Tell us what you need done and
+                  we&apos;ll put together a free, no-obligation estimate.
+                </p>
+                <EstimateButton />
+              </div>
+            ) : (
+              <div className="overflow-hidden rounded-2xl border border-border bg-card">
+                <ul className="divide-y divide-border">
+                  {service.pricing.map((item) => (
+                    <li
+                      key={item.label}
+                      className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6"
+                    >
+                      <span className="text-sm font-medium text-foreground">
+                        {item.label}
+                      </span>
+                      <span className="whitespace-nowrap text-sm font-bold text-navy">
+                        {item.price}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {service.pricingNote ? (
+              <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
+                {service.pricingNote}
+              </p>
+            ) : null}
+          </div>
+        </section>
+
+        <section className="border-t border-border bg-background py-14 sm:py-20">
           <div className="mx-auto grid max-w-4xl gap-10 px-4 sm:px-6 lg:grid-cols-5">
             <div className="flex flex-col gap-4 lg:col-span-3">
               <h2 className="font-heading text-2xl font-bold text-foreground">
@@ -103,7 +144,7 @@ export default async function ServicePage({
             <h2 className="mb-8 text-center font-heading text-2xl font-bold text-foreground">
               Explore our other services
             </h2>
-            <ServiceGrid activeSlug={service.slug} />
+            <ServiceGrid excludeSlug={service.slug} />
           </div>
         </section>
       </main>

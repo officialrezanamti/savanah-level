@@ -13,7 +13,7 @@ export function Logo({
 }) {
   return (
     <Link
-      href="#home"
+      href="/"
       aria-label={`${site.name} home`}
       className={cn('group inline-flex items-center gap-2.5', className)}
     >

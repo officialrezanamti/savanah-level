@@ -1,6 +1,9 @@
+'use client'
+
 import { ArrowRight, Phone } from 'lucide-react'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
+import { useEstimateModal } from '@/components/estimate-modal'
 
 const sizes = {
   sm: 'h-9 px-4 text-sm gap-1.5',
@@ -45,9 +48,12 @@ export function EstimateButton({
   className?: string
   label?: string
 }) {
+  const { open } = useEstimateModal()
+
   return (
-    <a
-      href="#contact"
+    <button
+      type="button"
+      onClick={open}
       className={cn(
         base,
         sizes[size],
@@ -57,6 +63,6 @@ export function EstimateButton({
     >
       <span>{label}</span>
       <ArrowRight className="size-[1.1em] transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
-    </a>
+    </button>
   )
 }

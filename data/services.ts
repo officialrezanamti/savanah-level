@@ -1,3 +1,8 @@
+export type PriceItem = {
+  label: string
+  price: string
+}
+
 export type Service = {
   slug: string
   title: string
@@ -5,7 +10,13 @@ export type Service = {
   description: string
   icon: string
   features: string[]
+  pricing: PriceItem[]
+  pricingNote?: string
+  estimateOnly?: boolean
 }
+
+const TRAVEL_FEE_NOTE =
+  'Prices apply to Savannah, Downtown Savannah, and Midtown Savannah. Areas outside Savannah may include a $25\u2013$45 travel fee.'
 
 export const services: Service[] = [
   {
@@ -22,6 +33,28 @@ export const services: Service[] = [
       'Over-fireplace and accent-wall installs',
       'Sound bar and speaker mounting',
     ],
+    pricing: [
+      { label: 'TVs under 48"', price: 'Starting at $95' },
+      { label: 'TVs 50" to 64"', price: 'Starting at $125' },
+      { label: 'TVs 65" to 74"', price: 'Starting at $165' },
+      {
+        label: 'TVs 75"+ (with customer assistance)',
+        price: 'Starting at $175',
+      },
+      {
+        label: 'TVs 75"+ (without assistance, 2-person job)',
+        price: 'Starting at $245',
+      },
+      {
+        label: 'Wire Concealment (materials included)',
+        price: 'Starting at $95',
+      },
+      {
+        label: 'TV Unmounting',
+        price: '50% of the applicable TV mounting price',
+      },
+    ],
+    pricingNote: TRAVEL_FEE_NOTE,
   },
   {
     slug: 'appliance-installation',
@@ -37,6 +70,26 @@ export const services: Service[] = [
       'Over-the-range microwave mounting',
       'Leak and function testing',
     ],
+    pricing: [
+      { label: 'Dishwashers', price: 'Starting at $195' },
+      { label: 'Dishwasher Uninstallation', price: 'Starting at $55' },
+      { label: 'Gas Stoves', price: 'Starting at $165' },
+      { label: 'Electric Stoves', price: 'Starting at $135' },
+      { label: 'Microwaves', price: 'Starting at $175' },
+      { label: 'Microwave Uninstallation', price: 'Starting at $45' },
+      { label: 'Dryers', price: 'Starting at $110' },
+      { label: 'Washing Machines', price: 'Starting at $120' },
+      { label: 'Electric Cooktops', price: 'Starting at $120' },
+      { label: 'Gas Cooktops', price: 'Starting at $160' },
+      { label: 'Kitchen Hoods', price: 'Starting at $120' },
+      { label: 'Kitchen Hoods with Liner', price: 'Starting at $295' },
+      { label: 'Single Wall Oven', price: 'Starting at $285' },
+      { label: 'Double Wall Oven', price: 'Starting at $410' },
+      { label: 'Ceiling Fans', price: 'Starting at $110' },
+      { label: 'AC Window Units', price: 'Starting at $120' },
+      { label: 'Garbage Disposal', price: 'Starting at $250' },
+    ],
+    pricingNote: `Delivery, parts, and disposal of old units are not included. ${TRAVEL_FEE_NOTE}`,
   },
   {
     slug: 'furniture-assembly',
@@ -51,6 +104,15 @@ export const services: Service[] = [
       'Outdoor and patio furniture',
       'Anti-tip wall anchoring',
     ],
+    pricing: [
+      { label: 'Normal Bed Frame', price: 'Starting at $110' },
+      { label: 'Bed Frame with Headboard', price: 'Starting at $165' },
+      { label: 'Dining Table with 4 Chairs', price: 'Starting at $175' },
+      { label: 'Dressers', price: 'Starting at $125' },
+      { label: 'Nightstands', price: 'Starting at $75' },
+      { label: 'Gas Grills', price: 'Starting at $185' },
+    ],
+    pricingNote: `Delivery, parts, and disposal of old packaging or materials are not included. ${TRAVEL_FEE_NOTE}`,
   },
   {
     slug: 'security-camera-installation',
@@ -65,6 +127,11 @@ export const services: Service[] = [
       'Optimal placement and coverage',
       'App and Wi-Fi setup',
     ],
+    pricing: [
+      { label: 'Google Nest Cameras', price: 'Starting at $120' },
+      { label: 'Google Doorbells', price: 'Starting at $95' },
+    ],
+    pricingNote: TRAVEL_FEE_NOTE,
   },
   {
     slug: 'home-maintenance',
@@ -79,6 +146,8 @@ export const services: Service[] = [
       'Weatherproofing and touch-ups',
       'Seasonal to-do lists',
     ],
+    pricing: [],
+    estimateOnly: true,
   },
   {
     slug: 'blinds-curtains-installation',
@@ -93,6 +162,13 @@ export const services: Service[] = [
       'Precise measuring and leveling',
       'Multi-window projects',
     ],
+    pricing: [
+      { label: 'Single window blind', price: '$45' },
+      { label: 'Window with 3 brackets', price: '$65' },
+      { label: 'Window with 4 brackets', price: '$86' },
+      { label: 'Long vertical blind for sliding door', price: '$75' },
+    ],
+    pricingNote: `Delivery, parts, and disposal of old blinds are not included. ${TRAVEL_FEE_NOTE}`,
   },
   {
     slug: 'wall-art-hanging',
@@ -107,6 +183,14 @@ export const services: Service[] = [
       'Layout planning and spacing',
       'Weight-rated anchoring',
     ],
+    pricing: [
+      { label: 'Small', price: '$15' },
+      { label: 'Medium', price: '$25' },
+      { label: 'Large', price: '$45' },
+      { label: 'XL', price: 'Starting at $65' },
+      { label: 'Mirror', price: 'Starting at $55' },
+    ],
+    pricingNote: `Delivery, parts, and disposal are not included. ${TRAVEL_FEE_NOTE}`,
   },
 ]
 
