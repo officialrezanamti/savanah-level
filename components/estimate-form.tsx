@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Loader2 } from 'lucide-react'
 import { services } from '@/data/services'
 
 export function EstimateForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   if (submitted) {
     return (
@@ -24,9 +26,43 @@ export function EstimateForm() {
 
   return (
     <form
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault()
-        setSubmitted(true)
+        setError(null)
+        setIsSubmitting(true)
+
+        const formData = new FormData(event.currentTarget)
+        const payload = {
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email'),
+          service: formData.get('service'),
+          details: formData.get('details'),
+        }
+
+        try {
+          const response = await fetch('/api/estimate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+
+          const result = await response.json().catch(() => ({}))
+
+          if (!response.ok) {
+            throw new Error(result.error ?? 'Something went wrong. Please try again.')
+          }
+
+          setSubmitted(true)
+        } catch (submitError) {
+          setError(
+            submitError instanceof Error
+              ? submitError.message
+              : 'Something went wrong. Please try again.',
+          )
+        } finally {
+          setIsSubmitting(false)
+        }
       }}
       className="flex flex-col gap-4"
     >
@@ -91,11 +127,19 @@ export function EstimateForm() {
         />
       </Field>
 
+      {error ? (
+        <p role="alert" className="text-sm font-medium text-destructive">
+          {error}
+        </p>
+      ) : null}
+
       <button
         type="submit"
-        className="mt-1 inline-flex h-12 items-center justify-center rounded-full bg-orange px-6 font-heading text-base font-bold text-orange-foreground transition-all hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        disabled={isSubmitting}
+        className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-orange px-6 font-heading text-base font-bold text-orange-foreground transition-all hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Request My Free Estimate
+        {isSubmitting ? <Loader2 className="size-5 animate-spin" aria-hidden="true" /> : null}
+        {isSubmitting ? 'Sending...' : 'Request My Free Estimate'}
       </button>
       <p className="text-center text-xs text-muted-foreground">
         No obligation. We typically respond the same day.
