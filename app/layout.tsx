@@ -61,6 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`light bg-background ${archivo.variable} ${inter.variable}`}
     >
       <body className="font-sans antialiased">
