@@ -74,8 +74,8 @@ export function EstimateForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="Jane Doe"
-            className="form-input"
+            placeholder="Jesus Christ"
+            className="form-input border p-2 rounded-lg"
           />
         </Field>
         <Field label="Phone" htmlFor="phone">
@@ -86,7 +86,7 @@ export function EstimateForm() {
             required
             autoComplete="tel"
             placeholder="(912) 000-0000"
-            className="form-input"
+            className="form-input border p-2 rounded-lg"
           />
         </Field>
       </div>
@@ -99,12 +99,12 @@ export function EstimateForm() {
           required
           autoComplete="email"
           placeholder="you@email.com"
-          className="form-input"
+          className="form-input border p-2 rounded-lg"
         />
       </Field>
 
       <Field label="What do you need help with?" htmlFor="service">
-        <select id="service" name="service" required className="form-input" defaultValue="">
+        <select id="service" name="service" required   className="form-input border p-2 rounded-lg" defaultValue="">
           <option value="" disabled>
             Select a service
           </option>
@@ -123,7 +123,7 @@ export function EstimateForm() {
           name="details"
           rows={4}
           placeholder="Tell us a little about the job, and your ZIP code in the Savannah area."
-          className="form-input resize-none"
+          className="form-input resize-none border p-2 rounded-lg"
         />
       </Field>
 
