@@ -1,17 +1,4 @@
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
-import { hours, site } from '@/data/site'
 import { EstimateForm } from '@/components/estimate-form'
-
-const details = [
-  { icon: Phone, label: 'Call or text', value: site.phone, href: site.phoneHref },
-  { icon: Mail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
-  { icon: MapPin, label: 'Service area', value: site.address },
-  {
-    icon: Clock,
-    label: 'Hours',
-    value: hours.map((h) => `${h.days}: ${h.time}`).join(' · '),
-  },
-]
 
 export function ContactSection() {
   return (
@@ -31,38 +18,6 @@ export function ContactSection() {
               area.
             </p>
           </div>
-
-          <ul className="flex flex-col gap-5">
-            {details.map((detail) => {
-              const Icon = detail.icon
-              const content = (
-                <div className="flex items-center gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-white/10 text-orange">
-                    <Icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <span className="flex flex-col">
-                    <span className="text-xs font-medium uppercase tracking-wide text-white/50">
-                      {detail.label}
-                    </span>
-                    <span className="font-heading text-base font-bold text-white">
-                      {detail.value}
-                    </span>
-                  </span>
-                </div>
-              )
-              return (
-                <li key={detail.label}>
-                  {detail.href ? (
-                    <a href={detail.href} className="transition-opacity hover:opacity-80">
-                      {content}
-                    </a>
-                  ) : (
-                    content
-                  )}
-                </li>
-              )
-            })}
-          </ul>
         </div>
 
         <div className="rounded-3xl bg-card p-6 text-card-foreground shadow-2xl sm:p-8">

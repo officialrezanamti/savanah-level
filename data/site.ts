@@ -13,10 +13,10 @@ export const site = {
 }
 
 export const nav = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Reviews', href: '#reviews' },
+  { label: 'Gallery', href: '/#gallery' },
+  { label: 'Reviews', href: '/#reviews' },
   { label: 'Contact', href: '#contact' },
 ]
 
