@@ -17,7 +17,7 @@ export const nav = [
   { label: 'Services', href: '/services' },
   { label: 'Gallery', href: '/#gallery' },
   { label: 'Reviews', href: '/#reviews' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export const hours = [
