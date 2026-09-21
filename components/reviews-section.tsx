@@ -28,6 +28,7 @@ export async function ReviewsSection() {
           </small>
         </article>
       ))}
+      nothing
     </section>
   );
 }
