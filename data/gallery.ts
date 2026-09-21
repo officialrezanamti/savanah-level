@@ -167,8 +167,14 @@ export const gallery: GalleryItem[] = [
     category: 'appliance-installation',
   },
    {
-    id: 'stainless-steel-oven-and-microwave-set',
-    src: '/gallery/stainless-steel-oven-and-microwave-set.webp',
+    id: 'samsung-microwave-and-electric-range',
+    src: '/gallery/samsung-microwave-and-electric-range.webp',
+    alt: 'Stainless steel Samsung over-the-range microwave and electric range with a glass cooktop in a kitchen with white cabinets.',
+    category: 'appliance-installation',
+  },
+   {
+    id: 'samsung-microwave-and-electric-range',
+    src: '/gallery/samsung-microwave-and-electric-range.webp',
     alt: 'Stainless steel Samsung over-the-range microwave and electric range with a glass cooktop in a kitchen with white cabinets.',
     category: 'appliance-installation',
   },
