@@ -193,7 +193,7 @@ export const services: Service[] = [
     pricingNote: `Delivery, parts, and disposal are not included. ${TRAVEL_FEE_NOTE}`,
   },
   {
-    slug: 'light-fixtures-and-chandelier',
+    slug: 'light-fixtures-chandelier',
     title: 'Light Fixtures & Chandelier',
     short:
       'Safe, secure installation of light fixtures, chandeliers, and ceiling lights.',
