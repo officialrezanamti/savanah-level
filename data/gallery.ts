@@ -148,4 +148,10 @@ export const gallery: GalleryItem[] = [
     alt: 'Built-in oven and microwave set in kitchen cabinetry',
     category: 'appliance-installation',
   },
+   {
+    id: 'using-the-stud-finder',
+    src: '/gallery/using-the-stud-finder.webp',
+    alt: 'Built-in oven and microwave set in kitchen cabinetry',
+    category: 'appliance-installation',
+  },
 ]
