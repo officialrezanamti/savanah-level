@@ -27,7 +27,7 @@ export function GallerySection() {
             <div
               key={item.id}
               className={`group relative overflow-hidden rounded-2xl bg-secondary ${
-                index === 0 ? 'col-span-2 lg:col-span-1 lg:row-span-2' : 'aspect-[4/3]'
+                index === 0 ? 'col-span-2 lg:col-span-1 lg:row-span-2' : 'aspect-4/3'
               }`}
             >
               <Image
