@@ -98,7 +98,7 @@ export const gallery: GalleryItem[] = [
     id: 'crystal-sputnik-chandelier',
     src: '/gallery/crystal-sputnik-chandelier.jpg',
     alt: 'Chrome crystal sputnik chandelier installed on a living room ceiling',
-    category: 'home-maintenance',
+    category: 'light-fixtures-and-chandelier',
   },
   {
     id: 'coastal-gallery-wall',
