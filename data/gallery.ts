@@ -173,9 +173,9 @@ export const gallery: GalleryItem[] = [
     category: 'appliance-installation',
   },
    {
-    id: 'samsung-microwave-and-electric-range',
-    src: '/gallery/samsung-microwave-and-electric-range.webp',
-    alt: 'Stainless steel Samsung over-the-range microwave and electric range with a glass cooktop in a kitchen with white cabinets.',
+    id: 'whirlpool-over-the-range-microwave-electric-cooktop',
+    src: '/gallery/whirlpool-over-the-range-microwave-electric-cooktop.webp',
+    alt: 'Stainless steel Whirlpool over-the-range microwave above a black glass electric cooktop in a kitchen with white cabinets and a marble-look countertop',
     category: 'appliance-installation',
   },
 ]
