@@ -89,6 +89,12 @@ export const gallery: GalleryItem[] = [
     category: 'appliance-installation',
   },
   {
+    id: 'wall-mounting-the-tv',
+    src: '/gallery/wall-mounting-the-tv.webp',
+    alt: 'A wall-mounted TV with a black and white table underneath it.',
+    category: 'tv-sound-bar-mounting',
+  },
+  {
     id: 'crystal-sputnik-chandelier',
     src: '/gallery/crystal-sputnik-chandelier.jpg',
     alt: 'Chrome crystal sputnik chandelier installed on a living room ceiling',
@@ -117,5 +123,11 @@ export const gallery: GalleryItem[] = [
     src: '/gallery/paris-canvas-brick.webp',
     alt: 'Framed Paris canvas artwork mounted level on an exposed brick wall',
     category: 'wall-art-hanging',
+  },
+  {
+    id: 'wall-mounted-tv-above-the-fireplace',
+    src: '/gallery/wall-mounted-tv-above-the-fireplace.webp',
+    alt: 'A wall-mounted TV positioned above the fireplace.',
+    category: 'tv-sound-bar-mounting',
   },
 ]
