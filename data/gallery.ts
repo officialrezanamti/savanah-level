@@ -101,12 +101,6 @@ export const gallery: GalleryItem[] = [
     category: 'wall-art-hanging',
   },
   {
-    id: 'botanical-gallery-wall-gray',
-    src: '/gallery/botanical-gallery-wall-gray.webp',
-    alt: 'Six framed botanical prints arranged in an evenly spaced grid on a gray wall',
-    category: 'wall-art-hanging',
-  },
-  {
     id: 'botanical-gallery-wall-laser',
     src: '/gallery/botanical-gallery-wall-laser.webp',
     alt: 'Six botanical prints hung in a grid and aligned straight with a laser level',
