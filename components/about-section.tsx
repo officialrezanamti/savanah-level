@@ -8,7 +8,7 @@ export function AboutSection() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div className="reveal order-2 lg:order-1">
           <img
-            src="/images/gallery-tv-mount.png"
+            src="/gallery/using-the-stud-finder.webp"
             alt="A clean, level TV installation completed by Savannah Level"
             className="aspect-4/3 w-full rounded-3xl object-cover shadow-xl"
           />
