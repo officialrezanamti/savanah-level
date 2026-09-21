@@ -136,10 +136,16 @@ export const gallery: GalleryItem[] = [
     alt: 'The pine tree painting installed in the stairwell.',
     category: 'wall-art-hanging',
   },
-   {
+  {
     id: 'sharp-microwave-oven',
     src: '/gallery/sharp-microwave-oven.webp',
     alt: 'Built-in microwave installed in the kitchen cabinet.',
+    category: 'appliance-installation',
+  },
+  {
+    id: 'built-in-oven-and-microwave-set',
+    src: '/gallery/built-in-oven-and-microwave-set.webp',
+    alt: 'Built-in oven and microwave set in kitchen cabinetry',
     category: 'appliance-installation',
   },
 ]
