@@ -160,10 +160,16 @@ export const gallery: GalleryItem[] = [
     alt: 'Installing a Ceiling fan in the living room.',
     category: 'appliance-installation',
   },
-   {
+  {
     id: 'stainless-steel-oven-and-microwave-set',
     src: '/gallery/stainless-steel-oven-and-microwave-set.webp',
     alt: 'Installation of a stainless steel oven and microwave set within wood-finish kitchen cabinetry.',
+    category: 'appliance-installation',
+  },
+   {
+    id: 'stainless-steel-oven-and-microwave-set',
+    src: '/gallery/stainless-steel-oven-and-microwave-set.webp',
+    alt: 'Stainless steel Samsung over-the-range microwave and electric range with a glass cooktop in a kitchen with white cabinets.',
     category: 'appliance-installation',
   },
 ]
