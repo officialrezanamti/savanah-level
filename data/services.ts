@@ -116,7 +116,7 @@ export const services: Service[] = [
   },
   {
     slug: 'security-camera-installation',
-    title: 'Security Camera Installation',
+    title: 'Security camera & doorbell installation ',
     short: 'Placement and setup of home security cameras and video doorbells.',
     description:
       'We help you cover the right angles, mount cameras cleanly, and get everything connected to your app so you can monitor your home from anywhere.',
@@ -199,7 +199,7 @@ export const services: Service[] = [
       'Safe, secure installation of light fixtures, chandeliers, and ceiling lights.',
     description:
       'We install and replace ceiling lights, chandeliers, pendants, and wall sconces so they hang level, sit flush, and work perfectly. Every fixture is mounted to rated hardware and tested before we leave.',
-    icon: 'LampCeiling',
+    icon: 'lamp-ceiling',
     features: [
       'Chandeliers and pendant lights',
       'Ceiling and flush-mount fixtures',
