@@ -1,4 +1,9 @@
-import { gallery } from '@/data/site'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { gallery } from '@/data/gallery'
+
+const preview = gallery.slice(0, 6)
 
 export function GallerySection() {
   return (
@@ -18,22 +23,32 @@ export function GallerySection() {
         </div>
 
         <div className="reveal mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {gallery.map((item, index) => (
+          {preview.map((item, index) => (
             <div
-              key={item.src}
-              className={`overflow-hidden rounded-2xl bg-secondary ${
-                index === 0 ? 'col-span-2 lg:col-span-1 lg:row-span-2' : ''
+              key={item.id}
+              className={`group relative overflow-hidden rounded-2xl bg-secondary ${
+                index === 0 ? 'col-span-2 lg:col-span-1 lg:row-span-2' : 'aspect-[4/3]'
               }`}
             >
-              <img
+              <Image
                 src={item.src || '/placeholder.svg'}
                 alt={item.alt}
-                className={`w-full object-cover transition-transform duration-500 hover:scale-105 ${
-                  index === 0 ? 'h-full min-h-56' : 'aspect-[4/3]'
-                }`}
+                fill
+                sizes="(min-width: 1024px) 33vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           ))}
+        </div>
+
+        <div className="reveal mt-10 flex justify-center">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 font-heading text-sm font-bold text-background transition-colors hover:bg-orange"
+          >
+            View Full Gallery
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
