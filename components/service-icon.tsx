@@ -1,6 +1,7 @@
 import {
   Armchair,
   Blinds,
+  BrickWall,
   Cctv,
   Frame,
   LampCeiling,
@@ -18,7 +19,7 @@ const icons: Record<string, LucideIcon> = {
   Cctv,
   Wrench,
   Blinds,
-  Frame,
+  BrickWall,
   LampCeiling
 }
 

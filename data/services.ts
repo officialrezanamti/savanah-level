@@ -176,7 +176,7 @@ export const services: Service[] = [
     short: 'Gallery walls, mirrors, and heavy art hung level and secure.',
     description:
       'From a single mirror to a full gallery wall, we plan the layout, use the right anchors for the weight, and hang everything level so your walls look intentional.',
-    icon: 'Frame',
+    icon: 'BrickWall',
     features: [
       'Single pieces and gallery walls',
       'Heavy mirrors and framed art',
