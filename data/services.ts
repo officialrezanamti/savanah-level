@@ -176,7 +176,7 @@ export const services: Service[] = [
     short: 'Gallery walls, mirrors, and heavy art hung level and secure.',
     description:
       'From a single mirror to a full gallery wall, we plan the layout, use the right anchors for the weight, and hang everything level so your walls look intentional.',
-    icon: 'Frame',
+    icon: 'BrickWall',
     features: [
       'Single pieces and gallery walls',
       'Heavy mirrors and framed art',
@@ -199,7 +199,7 @@ export const services: Service[] = [
       'Safe, secure installation of light fixtures, chandeliers, and ceiling lights.',
     description:
       'We install and replace ceiling lights, chandeliers, pendants, and wall sconces so they hang level, sit flush, and work perfectly. Every fixture is mounted to rated hardware and tested before we leave.',
-    icon: 'lamp-ceiling',
+    icon: 'LampCeiling',
     features: [
       'Chandeliers and pendant lights',
       'Ceiling and flush-mount fixtures',
