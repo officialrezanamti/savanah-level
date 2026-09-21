@@ -5,29 +5,51 @@ import { NextResponse } from "next/server";
 const PLACE_ID = "ChIJ1YyASwBXv48ReOaXI0Y_q_k";
 
 export async function GET() {
-  const res = await fetch(
-    `https://places.googleapis.com/v1/places/${PLACE_ID}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY!,
-        "X-Goog-FieldMask":
-          "displayName,rating,userRatingCount,reviews",
-      },
-      next: {
-        revalidate: 86400,
-      },
-    }
-  );
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
-  if (!res.ok) {
+  if (!apiKey) {
+    console.error("GOOGLE_MAPS_API_KEY is not configured");
+
     return NextResponse.json(
-      { error: "Failed to fetch reviews" },
-      { status: res.status }
+      { error: "Server configuration error" },
+      { status: 500 }
     );
   }
 
-  const data = await res.json();
+  try {
+    const res = await fetch(
+      `https://places.googleapis.com/v1/places/${PLACE_ID}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-Goog-Api-Key": apiKey,
+          "X-Goog-FieldMask":
+            "displayName,rating,userRatingCount,reviews",
+        },
+        next: {
+          revalidate: 86400,
+        },
+      }
+    );
 
-  return NextResponse.json(data);
+    if (!res.ok) {
+      console.error("Google Places API error:", res.status);
+
+      return NextResponse.json(
+        { error: "Failed to fetch reviews" },
+        { status: 502 }
+      );
+    }
+
+    const data = await res.json();
+
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error("Reviews API error:", error);
+
+    return NextResponse.json(
+      { error: "Failed to fetch reviews" },
+      { status: 500 }
+    );
+  }
 }

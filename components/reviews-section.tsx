@@ -1,15 +1,36 @@
-export async function ReviewsSection() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/reviews`, {
-    next: {
-      revalidate: 86400,
-    },
-  });
+"use client";
 
-  const data = await res.json();
+import { useEffect, useState } from "react";
+
+export function ReviewsSection() {
+  const [reviews, setReviews] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function getReviews() {
+      try {
+        const res = await fetch("/api/reviews");
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch reviews");
+        }
+
+        const data = await res.json();
+        setReviews(data?.reviews ?? []);
+      } catch (error) {
+        console.error("Reviews error:", error);
+      }
+    }
+
+    getReviews();
+  }, []);
+
+  if (!reviews.length) {
+    return null;
+  }
 
   return (
     <section>
-      {data?.reviews?.map((review: any) => (
+      {reviews.map((review) => (
         <article key={review.name}>
           <strong>
             {review.authorAttribution?.displayName}
@@ -28,7 +49,6 @@ export async function ReviewsSection() {
           </small>
         </article>
       ))}
-      nothing
     </section>
   );
 }
