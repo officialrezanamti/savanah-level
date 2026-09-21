@@ -151,7 +151,13 @@ export const gallery: GalleryItem[] = [
    {
     id: 'using-the-stud-finder',
     src: '/gallery/using-the-stud-finder.webp',
-    alt: 'Built-in oven and microwave set in kitchen cabinetry',
+    alt: 'Using a stud finder to mount the TV.',
+    category: 'tv-sound-bar-mounting',
+  },
+   {
+    id: 'ceiling-fan',
+    src: '/gallery/ceiling-fan.webp',
+    alt: 'Installing a Ceiling fan in the living room.',
     category: 'tv-sound-bar-mounting',
   },
 ]
