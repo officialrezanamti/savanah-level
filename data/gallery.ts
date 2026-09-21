@@ -148,16 +148,22 @@ export const gallery: GalleryItem[] = [
     alt: 'Built-in oven and microwave set in kitchen cabinetry',
     category: 'appliance-installation',
   },
-   {
+  {
     id: 'using-the-stud-finder',
     src: '/gallery/using-the-stud-finder.webp',
     alt: 'Using a stud finder to mount the TV.',
     category: 'tv-sound-bar-mounting',
   },
-   {
+  {
     id: 'ceiling-fan',
     src: '/gallery/ceiling-fan.webp',
     alt: 'Installing a Ceiling fan in the living room.',
-    category: 'tv-sound-bar-mounting',
+    category: 'appliance-installation',
+  },
+   {
+    id: 'stainless-steel-oven-and-microwave-set',
+    src: '/gallery/stainless-steel-oven-and-microwave-set.webp',
+    alt: 'Installation of a stainless steel oven and microwave set within wood-finish kitchen cabinetry.',
+    category: 'appliance-installation',
   },
 ]
