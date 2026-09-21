@@ -166,16 +166,22 @@ export const gallery: GalleryItem[] = [
     alt: 'Installation of a stainless steel oven and microwave set within wood-finish kitchen cabinetry.',
     category: 'appliance-installation',
   },
-   {
+  {
     id: 'samsung-microwave-and-electric-range',
     src: '/gallery/samsung-microwave-and-electric-range.webp',
     alt: 'Stainless steel Samsung over-the-range microwave and electric range with a glass cooktop in a kitchen with white cabinets.',
     category: 'appliance-installation',
   },
-   {
+  {
     id: 'whirlpool-over-the-range-microwave-electric-cooktop',
     src: '/gallery/whirlpool-over-the-range-microwave-electric-cooktop.webp',
-    alt: 'Stainless steel Whirlpool over-the-range microwave above a black glass electric cooktop in a kitchen with white cabinets and a marble-look countertop',
+    alt: 'Stainless steel Whirlpool over-the-range microwave above a black glass electric cooktop in a kitchen with white cabinets and a marble-look countertop.',
+    category: 'appliance-installation',
+  },
+   {
+    id: 'stainless-steel-dishwasher-installation',
+    src: '/gallery/stainless-steel-dishwasher-installation.webp',
+    alt: 'Stainless steel built-in dishwasher with a Savannah Level LLC appliance installation and TV mounting magnet, between wooden kitchen cabinets.',
     category: 'appliance-installation',
   },
 ]
