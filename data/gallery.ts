@@ -130,10 +130,16 @@ export const gallery: GalleryItem[] = [
     alt: 'A wall-mounted TV positioned above the fireplace.',
     category: 'tv-sound-bar-mounting',
   },
-   {
+  {
     id: 'pine-tree-painting',
     src: '/gallery/pine-tree-painting.webp',
     alt: 'The pine tree painting installed in the stairwell.',
     category: 'wall-art-hanging',
+  },
+   {
+    id: 'sharp-microwave-oven',
+    src: '/gallery/sharp-microwave-oven.webp',
+    alt: 'Built-in microwave installed in the kitchen cabinet.',
+    category: 'appliance-installation',
   },
 ]
