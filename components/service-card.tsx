@@ -31,7 +31,7 @@ export function ServiceCard({
       href={`/services/${service.slug}`}
       className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-all duration-200 hover:-translate-y-1 hover:border-orange/40 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
     >
-      <span className="grid size-12 place-items-center rounded-xl bg-navy text-navy-foreground transition-colors duration-200 group-hover:bg-orange group-hover:text-orange-foreground">
+      <span className="grid size-12 place-items-center rounded-xl bg-linear-to-r from-navy to-blue-500 text-navy-foreground transition-colors duration-200 group-hover:from-orange group-hover:to-orange-900 group-hover:text-orange-foreground">
         <ServiceIcon name={service.icon} className="size-6" />
       </span>
       <div className="flex flex-col gap-2">
