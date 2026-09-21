@@ -193,13 +193,13 @@ export const services: Service[] = [
     pricingNote: `Delivery, parts, and disposal are not included. ${TRAVEL_FEE_NOTE}`,
   },
   {
-    slug: 'light-fixtures-chandelier',
+    slug: 'light-fixtures-and-chandelier',
     title: 'Light Fixtures & Chandelier',
     short:
       'Safe, secure installation of light fixtures, chandeliers, and ceiling lights.',
     description:
       'We install and replace ceiling lights, chandeliers, pendants, and wall sconces so they hang level, sit flush, and work perfectly. Every fixture is mounted to rated hardware and tested before we leave.',
-    icon: 'lamp-ceiling',
+    icon: 'LampCeiling',
     features: [
       'Chandeliers and pendant lights',
       'Ceiling and flush-mount fixtures',

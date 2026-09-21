@@ -3,6 +3,7 @@ import {
   Blinds,
   Cctv,
   Frame,
+  LampCeiling,
   Tv,
   WashingMachine,
   Wrench,
@@ -18,6 +19,7 @@ const icons: Record<string, LucideIcon> = {
   Wrench,
   Blinds,
   Frame,
+  LampCeiling
 }
 
 export function ServiceIcon({
