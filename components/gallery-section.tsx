@@ -1,9 +1,10 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { gallery } from '@/data/gallery'
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { gallery } from "@/data/gallery";
+import { Lightbox } from "@/components/lightbox";
 
-const preview = gallery.slice(0, 7)
+const preview = gallery.slice(0, 7);
 
 export function GallerySection() {
   return (
@@ -22,25 +23,38 @@ export function GallerySection() {
           </p>
         </div>
 
-        <div className="reveal mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {preview.map((item, index) => (
-            <div
-              key={item.id}
-              
-              className={`group relative overflow-hidden rounded-2xl bg-secondary ${
-                index === 0 ? 'col-span-2 lg:col-span-1 lg:row-span-2' : index === 3 ? 'col-span-2 lg:col-span-1 lg:row-span-2' :'aspect-4/3'
-              }`}
-            >
-              <Image
-                src={item.src || '/placeholder.svg'}
-                alt={item.alt}
-                fill
-                sizes="(min-width: 1024px) 33vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+        <Lightbox images={preview}>
+          {(open) => (
+            <div className="reveal mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+              {preview.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`group relative overflow-hidden rounded-2xl bg-secondary ${
+                    index === 0
+                      ? "col-span-2 lg:col-span-1 lg:row-span-2"
+                      : index === 3
+                        ? "col-span-2 lg:col-span-1 lg:row-span-2"
+                        : "aspect-4/3"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={(event) => open(index, event.currentTarget)}
+                    aria-label={`View ${item.alt}`}
+                    className="absolute inset-0 z-10 cursor-zoom-in"
+                  />
+                  <Image
+                    src={item.src || "/placeholder.svg"}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          )}
+        </Lightbox>
 
         <div className="reveal mt-10 flex justify-center">
           <Link
@@ -53,5 +67,5 @@ export function GallerySection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
