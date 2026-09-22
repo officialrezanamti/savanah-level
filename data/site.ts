@@ -18,7 +18,7 @@ export const nav = [
   { label: 'Services', href: '/services' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Reviews', href: '/#reviews' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const hours = [
@@ -89,7 +89,7 @@ export const gallery = [
 ]
 
 export const socials = [
-  { label: 'Facebook', href: '#' },
-  { label: 'Instagram', href: '#' },
+  { label: 'Facebook', handle: 'Savannah Level', href: 'https://www.facebook.com/SavannahLevel' },
+  { label: 'Instagram', handle: '@sav_level', href: 'https://www.instagram.com/sav_level' },
   { label: 'Google', href: '#' },
 ]
