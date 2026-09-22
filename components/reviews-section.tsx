@@ -1,23 +1,6 @@
-import { Star } from 'lucide-react'
-import { ratingPlatforms, reviews } from '@/data/site'
+"use client";
 
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Star
-          key={index}
-          className={
-            index < rating
-              ? 'size-4 fill-orange text-orange'
-              : 'size-4 text-muted-foreground/30'
-          }
-          aria-hidden="true"
-        />
-      ))}
-    </div>
-  )
-}
+import { FeaturableReviews } from "@/components/featurable-reviews";
 
 export function ReviewsSection() {
   return (
@@ -32,45 +15,10 @@ export function ReviewsSection() {
           </h2>
         </div>
 
-        <div className="reveal mt-8 flex flex-wrap items-stretch justify-center gap-3">
-          {ratingPlatforms.map((platform) => (
-            <div
-              key={platform.name}
-              className="flex min-w-40 flex-1 flex-col items-center gap-1 rounded-xl border border-border bg-card px-4 py-4 text-center"
-            >
-              <Stars rating={5} />
-              <span className="font-heading text-sm font-bold text-foreground">
-                {platform.name}
-              </span>
-              <span className="text-xs text-muted-foreground">
-                {platform.note}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div className="reveal mt-6 grid gap-5 md:grid-cols-3">
-          {reviews.map((review) => (
-            <figure
-              key={review.name}
-              className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
-            >
-              <Stars rating={review.rating} />
-              <blockquote className="text-pretty text-sm leading-relaxed text-foreground">
-                &ldquo;{review.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-auto flex flex-col">
-                <span className="font-heading text-sm font-bold text-foreground">
-                  {review.name}
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  {review.location} &middot; {review.service}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="reveal mx-auto mt-8 max-w-6xl overflow-hidden">
+          <FeaturableReviews />
         </div>
       </div>
     </section>
-  )
+  );
 }

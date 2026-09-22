@@ -1,6 +1,7 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "react-google-reviews/dist/index.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -153,7 +154,6 @@ html {
     var(--blue-700) 80%,
     var(--blue-400) 100%
   );
-  
 }
 
 /* Hero photo overlay: navy -> mid -> bright fading toward white at the far
