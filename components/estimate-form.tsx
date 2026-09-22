@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { CheckCircle2, Loader2 } from 'lucide-react'
-import { services } from '@/data/services'
+import { useState } from "react";
+import { CheckCircle2, Loader2 } from "lucide-react";
+import { services } from "@/data/services";
 
 export function EstimateForm() {
-  const [submitted, setSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (submitted) {
     return (
@@ -17,18 +17,21 @@ export function EstimateForm() {
           Thanks — your request is in!
         </p>
         <p className="max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
-          We&apos;ll reach out shortly to confirm your free estimate. Need a hand
-          sooner? Give us a call anytime.
+          We&apos;ll reach out shortly to confirm your free estimate. Need a
+          hand sooner? Give us a call anytime.
         </p>
       </div>
-    )
+    );
   }
 
   return (
     <form
-      onSubmit={async (event) => {
-        event.preventDefault()
-        setError(null)
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+
+        // Estimate submission is intentionally disabled while the contact workflow is being developed.
+        /*
         setIsSubmitting(true)
 
         const formData = new FormData(event.currentTarget)
@@ -63,6 +66,7 @@ export function EstimateForm() {
         } finally {
           setIsSubmitting(false)
         }
+        */
       }}
       className="flex flex-col gap-4"
     >
@@ -104,7 +108,13 @@ export function EstimateForm() {
       </Field>
 
       <Field label="What do you need help with?" htmlFor="service">
-        <select id="service" name="service" required   className="form-input border p-2 rounded-lg" defaultValue="">
+        <select
+          id="service"
+          name="service"
+          required
+          className="form-input border p-2 rounded-lg"
+          defaultValue=""
+        >
           <option value="" disabled>
             Select a service
           </option>
@@ -138,14 +148,16 @@ export function EstimateForm() {
         disabled={isSubmitting}
         className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-orange px-6 font-heading text-base font-bold text-orange-foreground transition-all hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {isSubmitting ? <Loader2 className="size-5 animate-spin" aria-hidden="true" /> : null}
-        {isSubmitting ? 'Sending...' : 'Request My Free Estimate'}
+        {isSubmitting ? (
+          <Loader2 className="size-5 animate-spin" aria-hidden="true" />
+        ) : null}
+        {isSubmitting ? "Sending..." : "Request My Free Estimate"}
       </button>
       <p className="text-center text-xs text-muted-foreground">
         No obligation. We typically respond the same day.
       </p>
     </form>
-  )
+  );
 }
 
 function Field({
@@ -153,9 +165,9 @@ function Field({
   htmlFor,
   children,
 }: {
-  label: string
-  htmlFor: string
-  children: React.ReactNode
+  label: string;
+  htmlFor: string;
+  children: React.ReactNode;
 }) {
   return (
     <label htmlFor={htmlFor} className="flex flex-col gap-1.5">
@@ -164,5 +176,5 @@ function Field({
       </span>
       {children}
     </label>
-  )
+  );
 }
