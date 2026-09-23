@@ -1,41 +1,60 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRef } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation } from 'swiper/modules'
-import type { Swiper as SwiperType } from 'swiper'
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
-import type { PostCard } from '@/lib/blog-types'
-import { urlFor } from '@/sanity/lib/image'
+import type { PostCard } from "@/lib/blog-types";
+import { urlFor } from "@/sanity/lib/image";
 
-import 'swiper/css'
-import 'swiper/css/navigation'
+import "swiper/css";
+import "swiper/css/navigation";
 
 function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export function FeaturedSlider({ posts }: { posts: PostCard[] }) {
-  const swiperRef = useRef<SwiperType | null>(null)
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
-  if (posts.length === 0) return null
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  if (posts.length === 0) return null;
 
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onMouseEnter={() => swiperRef.current?.autoplay.stop()}
+      onMouseLeave={() => {
+        if (!reducedMotion) swiperRef.current?.autoplay.start();
+      }}
+    >
       <Swiper
         modules={[Navigation, Autoplay]}
         onSwiper={(swiper) => {
-          swiperRef.current = swiper
+          swiperRef.current = swiper;
         }}
         loop={posts.length > 1}
-        autoplay={posts.length > 1 ? { delay: 6000, disableOnInteraction: false } : false}
+        autoplay={
+          posts.length > 1 && !reducedMotion
+            ? { delay: 3000, disableOnInteraction: false }
+            : false
+        }
         spaceBetween={0}
         className="overflow-hidden rounded-3xl"
       >
@@ -43,7 +62,7 @@ export function FeaturedSlider({ posts }: { posts: PostCard[] }) {
           <SwiperSlide key={post._id}>
             <Link
               href={`/blog/${post.slug.current}`}
-              className="brand-gradient-overlay relative flex min-h-[420px] items-end overflow-hidden sm:min-h-[480px]"
+              className="brand-gradient-overlay relative flex min-h-105 items-end overflow-hidden sm:min-h-120"
             >
               {post.coverImage && (
                 <Image
@@ -96,5 +115,5 @@ export function FeaturedSlider({ posts }: { posts: PostCard[] }) {
         </div>
       )}
     </div>
-  )
+  );
 }

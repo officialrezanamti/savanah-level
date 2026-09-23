@@ -1,18 +1,18 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { PortableText, type PortableTextComponents } from '@portabletext/react'
-import type { PortableTextBlock } from 'sanity'
+import Image from "next/image";
+import Link from "next/link";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "sanity";
 
-import { urlFor } from '@/sanity/lib/image'
-import { CodeBlock } from '@/components/blog/code-block'
-import { VideoEmbed } from '@/components/blog/video-embed'
+import { urlFor } from "@/sanity/lib/image";
+import { CodeBlock } from "@/components/blog/code-block";
+import { VideoEmbed } from "@/components/blog/video-embed";
 
 function slugify(text: string) {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\s+/g, '-')
+    .replace(/\s+/g, "-");
 }
 
 const components: PortableTextComponents = {
@@ -57,8 +57,22 @@ const components: PortableTextComponents = {
     ),
   },
   marks: {
-    strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+    strong: ({ children }) => (
+      <strong className="font-semibold text-foreground">{children}</strong>
+    ),
     em: ({ children }) => <em className="italic">{children}</em>,
+    underline: ({ children }) => <u>{children}</u>,
+    "strike-through": ({ children }) => <s>{children}</s>,
+    highlight: ({ children }) => (
+      <mark className="rounded-sm bg-orange/25 px-1 text-foreground">
+        {children}
+      </mark>
+    ),
+    sup: ({ children }) => <sup>{children}</sup>,
+    sub: ({ children }) => <sub>{children}</sub>,
+    textColor: ({ children, value }) => (
+      <span style={{ color: value?.color || undefined }}>{children}</span>
+    ),
     code: ({ children }) => (
       <code className="rounded-sm bg-secondary px-1.5 py-0.5 font-mono text-sm text-foreground">
         {children}
@@ -66,9 +80,11 @@ const components: PortableTextComponents = {
     ),
     link: ({ children, value }) => (
       <Link
-        href={value?.href || '#'}
-        target={value?.href?.startsWith('http') ? '_blank' : undefined}
-        rel={value?.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+        href={value?.href || "#"}
+        target={value?.href?.startsWith("http") ? "_blank" : undefined}
+        rel={
+          value?.href?.startsWith("http") ? "noopener noreferrer" : undefined
+        }
         className="font-medium text-blue underline underline-offset-2 hover:text-navy"
       >
         {children}
@@ -77,13 +93,13 @@ const components: PortableTextComponents = {
   },
   types: {
     image: ({ value }) => {
-      if (!value?.asset) return null
+      if (!value?.asset) return null;
       return (
         <figure className="mt-8">
           <div className="relative aspect-video overflow-hidden rounded-2xl">
             <Image
               src={urlFor(value).width(1200).height(675).url()}
-              alt={value.alt || ''}
+              alt={value.alt || ""}
               fill
               className="object-cover"
             />
@@ -94,21 +110,27 @@ const components: PortableTextComponents = {
             </figcaption>
           )}
         </figure>
-      )
+      );
     },
     code: ({ value }) => (
-      <CodeBlock code={value?.code || ''} language={value?.language} filename={value?.filename} />
+      <CodeBlock
+        code={value?.code || ""}
+        language={value?.language}
+        filename={value?.filename}
+      />
     ),
-    videoEmbed: ({ value }) => <VideoEmbed url={value?.url} caption={value?.caption} />,
+    videoEmbed: ({ value }) => (
+      <VideoEmbed url={value?.url} caption={value?.caption} />
+    ),
   },
-}
+};
 
 export function PostBody({ body }: { body: PortableTextBlock[] }) {
   return (
     <div className="max-w-none">
       <PortableText value={body} components={components} />
     </div>
-  )
+  );
 }
 
-export { slugify }
+export { slugify };

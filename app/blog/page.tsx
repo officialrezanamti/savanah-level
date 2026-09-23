@@ -1,35 +1,55 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import { site } from '@/data/site'
-import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'
-import { MobileCtaBar } from '@/components/mobile-cta-bar'
-import { FeaturedSlider } from '@/components/blog/featured-slider'
-import { CategoryFilter } from '@/components/blog/category-filter'
-import { PostCard } from '@/components/blog/post-card'
-import { client } from '@/sanity/lib/client'
-import { allCategoriesQuery, allPostsQuery, featuredPostsQuery } from '@/sanity/lib/queries'
-import type { Category, PostCard as PostCardType } from '@/lib/blog-types'
+import { site } from "@/data/site";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { MobileCtaBar } from "@/components/mobile-cta-bar";
+import { FeaturedSlider } from "@/components/blog/featured-slider";
+import { CategoryFilter } from "@/components/blog/category-filter";
+import { PostCard } from "@/components/blog/post-card";
+import { client } from "@/sanity/lib/client";
+import {
+  allCategoriesQuery,
+  allPostsQuery,
+  featuredPostsQuery,
+  postCountQuery,
+} from "@/sanity/lib/queries";
+import type { Category, PostCard as PostCardType } from "@/lib/blog-types";
 
 export const metadata: Metadata = {
   title: `Blog | ${site.name}`,
   description:
-    'Home improvement tips, mounting guides, and project stories from the Savannah Level team, serving Savannah, Georgetown, Pooler, and the surrounding areas.',
-  alternates: { canonical: '/blog' },
-}
+    "Home improvement tips, mounting guides, and project stories from the Savannah Level team, serving Savannah, Georgetown, Pooler, and the surrounding areas.",
+  alternates: { canonical: "/blog" },
+};
 
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>
+  searchParams: Promise<{ category?: string; page?: string }>;
 }) {
-  const { category } = await searchParams
+  const { category, page: pageParam } = await searchParams;
+  const page = Math.max(1, Number.parseInt(pageParam || "1", 10) || 1);
+  const pageSize = 9;
+  const start = (page - 1) * pageSize;
 
-  const [featuredPosts, posts, categories] = await Promise.all([
+  const [featuredPosts, posts, categoryNames, postCount] = await Promise.all([
     client.fetch<PostCardType[]>(featuredPostsQuery).catch(() => []),
-    client.fetch<PostCardType[]>(allPostsQuery, { category: category || null }).catch(() => []),
-    client.fetch<Category[]>(allCategoriesQuery).catch(() => []),
-  ])
+    client
+      .fetch<
+        PostCardType[]
+      >(allPostsQuery, { category: category || null, start, end: start + pageSize })
+      .catch(() => []),
+    client.fetch<string[]>(allCategoriesQuery).catch(() => []),
+    client
+      .fetch<number>(postCountQuery, { category: category || null })
+      .catch(() => 0),
+  ]);
+  const categories: Category[] = categoryNames
+    .filter((name): name is string => Boolean(name))
+    .map((name) => ({ title: name, slug: name }));
+  const pageCount = Math.ceil(postCount / pageSize);
 
   return (
     <>
@@ -78,11 +98,30 @@ export default async function BlogPage({
                 ))}
               </div>
             )}
+            {pageCount > 1 && (
+              <nav
+                className="mt-10 flex items-center justify-center gap-2"
+                aria-label="Blog pages"
+              >
+                {Array.from({ length: pageCount }, (_, index) => index + 1).map(
+                  (pageNumber) => (
+                    <Link
+                      key={pageNumber}
+                      href={`/blog?${new URLSearchParams({ ...(category ? { category } : {}), page: String(pageNumber) })}`}
+                      aria-current={pageNumber === page ? "page" : undefined}
+                      className={`grid size-10 place-items-center rounded-full text-sm font-semibold ${pageNumber === page ? "bg-navy text-white" : "bg-secondary text-foreground hover:bg-secondary/70"}`}
+                    >
+                      {pageNumber}
+                    </Link>
+                  ),
+                )}
+              </nav>
+            )}
           </div>
         </section>
       </main>
       <SiteFooter />
       <MobileCtaBar />
     </>
-  )
+  );
 }

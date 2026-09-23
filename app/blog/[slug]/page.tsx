@@ -1,47 +1,49 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { ChevronRight, Clock } from 'lucide-react'
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ChevronRight, Clock } from "lucide-react";
 
-import { site } from '@/data/site'
-import { SITE_URL } from '@/app/sitemap'
-import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'
-import { MobileCtaBar } from '@/components/mobile-cta-bar'
-import { PostBody } from '@/components/blog/post-body'
-import { PostGallery } from '@/components/blog/post-gallery'
-import { TableOfContents } from '@/components/blog/table-of-contents'
-import { ShareButtons } from '@/components/blog/share-buttons'
-import { RelatedPosts } from '@/components/blog/related-posts'
-import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
+import { site } from "@/data/site";
+import { SITE_URL } from "@/app/sitemap";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { MobileCtaBar } from "@/components/mobile-cta-bar";
+import { PostBody } from "@/components/blog/post-body";
+import { PostGallery } from "@/components/blog/post-gallery";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { ShareButtons } from "@/components/blog/share-buttons";
+import { RelatedPosts } from "@/components/blog/related-posts";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import {
   allPostSlugsQuery,
   postBySlugQuery,
   recentPostsFallbackQuery,
   relatedPostsQuery,
-} from '@/sanity/lib/queries'
-import type { PostCard as PostCardType, PostDetail } from '@/lib/blog-types'
-import { getHeadings, getReadingTime } from '@/lib/reading-time'
+} from "@/sanity/lib/queries";
+import type { PostCard as PostCardType, PostDetail } from "@/lib/blog-types";
+import { getHeadings, getReadingTime } from "@/lib/reading-time";
 
 export async function generateStaticParams() {
-  const slugs = await client.fetch<string[]>(allPostSlugsQuery).catch(() => [])
-  return slugs.map((slug) => ({ slug }))
+  const slugs = await client.fetch<string[]>(allPostSlugsQuery).catch(() => []);
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params
-  const post = await client.fetch<PostDetail | null>(postBySlugQuery, { slug }).catch(() => null)
+  const { slug } = await params;
+  const post = await client
+    .fetch<PostDetail | null>(postBySlugQuery, { slug })
+    .catch(() => null);
 
-  if (!post) return { title: `Blog | ${site.name}` }
+  if (!post) return { title: `Blog | ${site.name}` };
 
-  const title = post.seoTitle || `${post.title} | ${site.name} Blog`
-  const description = post.seoDescription || post.excerpt
+  const title = post.seoTitle || `${post.title} | ${site.name} Blog`;
+  const description = post.seoDescription || post.excerpt;
 
   return {
     title,
@@ -50,58 +52,68 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime: post.publishedAt,
-      images: post.coverImage ? [urlFor(post.coverImage).width(1200).height(630).url()] : [],
+      images: post.coverImage
+        ? [urlFor(post.coverImage).width(1200).height(630).url()]
+        : [],
     },
-  }
+  };
 }
 
 function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const post = await client.fetch<PostDetail | null>(postBySlugQuery, { slug }).catch(() => null)
+  const { slug } = await params;
+  const post = await client
+    .fetch<PostDetail | null>(postBySlugQuery, { slug })
+    .catch(() => null);
 
-  if (!post) notFound()
+  if (!post) notFound();
 
-  const categorySlugs = post.categories?.map((c) => c.slug) ?? []
+  const categorySlugs = post.categories?.map((c) => c.slug) ?? [];
 
   const related = categorySlugs.length
     ? await client
         .fetch<PostCardType[]>(relatedPostsQuery, { slug, categorySlugs })
         .catch(() => [])
-    : []
+    : [];
 
   const relatedPosts = related.length
     ? related
-    : await client.fetch<PostCardType[]>(recentPostsFallbackQuery, { slug }).catch(() => [])
+    : await client
+        .fetch<PostCardType[]>(recentPostsFallbackQuery, { slug })
+        .catch(() => []);
 
-  const headings = getHeadings(post.body)
-  const readingTime = getReadingTime(post.body)
-  const postUrl = new URL(`/blog/${slug}`, SITE_URL).toString()
+  const headings = getHeadings(post.body);
+  const readingTime = getReadingTime(post.body);
+  const postUrl = new URL(`/blog/${slug}`, SITE_URL).toString();
 
   const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
-    author: post.author ? { '@type': 'Person', name: post.author.name } : undefined,
-    publisher: { '@type': 'Organization', name: site.name },
+    author: post.author
+      ? { "@type": "Person", name: post.author.name }
+      : undefined,
+    publisher: { "@type": "Organization", name: site.name },
     mainEntityOfPage: postUrl,
-    image: post.coverImage ? urlFor(post.coverImage).width(1200).height(630).url() : undefined,
-  }
+    image: post.coverImage
+      ? urlFor(post.coverImage).width(1200).height(630).url()
+      : undefined,
+  };
 
   return (
     <>
@@ -114,7 +126,10 @@ export default async function BlogPostPage({
 
         <section className="bg-navy pb-8 pt-10 text-navy-foreground sm:pt-14">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-white/60">
+            <nav
+              aria-label="Breadcrumb"
+              className="flex items-center gap-1.5 text-sm text-white/60"
+            >
               <Link href="/blog" className="hover:text-white">
                 Blog
               </Link>
@@ -144,7 +159,10 @@ export default async function BlogPostPage({
                   {post.author.image ? (
                     <div className="relative size-10 overflow-hidden rounded-full bg-white/10">
                       <Image
-                        src={urlFor(post.author.image).width(80).height(80).url()}
+                        src={urlFor(post.author.image)
+                          .width(80)
+                          .height(80)
+                          .url()}
                         alt={post.author.name}
                         fill
                         className="object-cover"
@@ -156,8 +174,14 @@ export default async function BlogPostPage({
                     </div>
                   )}
                   <div>
-                    <p className="text-sm font-semibold text-white">{post.author.name}</p>
-                    {post.author.role && <p className="text-xs text-white/60">{post.author.role}</p>}
+                    <p className="text-sm font-semibold text-white">
+                      {post.author.name}
+                    </p>
+                    {post.author.role && (
+                      <p className="text-xs text-white/60">
+                        {post.author.role}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -175,7 +199,7 @@ export default async function BlogPostPage({
         {post.coverImage && (
           <section className="bg-background">
             <div className="mx-auto max-w-5xl px-4 pt-8 sm:px-6">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-3xl">
+              <div className="relative aspect-video overflow-hidden rounded-3xl">
                 <Image
                   src={urlFor(post.coverImage).width(1400).height(788).url()}
                   alt={post.coverImage.alt || post.title}
@@ -192,8 +216,15 @@ export default async function BlogPostPage({
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_240px]">
               <article className="min-w-0">
+                {headings.length > 0 && (
+                  <div className="mb-8 lg:hidden">
+                    <TableOfContents headings={headings} />
+                  </div>
+                )}
                 <PostBody body={post.body} />
-                {post.gallery && post.gallery.length > 0 && <PostGallery images={post.gallery} />}
+                {post.gallery && post.gallery.length > 0 && (
+                  <PostGallery images={post.gallery} />
+                )}
 
                 <div className="mt-10 border-t border-border pt-6">
                   <ShareButtons url={postUrl} title={post.title} />
@@ -216,5 +247,5 @@ export default async function BlogPostPage({
       <SiteFooter />
       <MobileCtaBar />
     </>
-  )
+  );
 }
