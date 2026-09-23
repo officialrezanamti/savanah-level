@@ -1,0 +1,140 @@
+import { DocumentTextIcon, ImagesIcon } from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+
+export const postType = defineType({
+  name: 'post',
+  title: 'Post',
+  type: 'document',
+  icon: DocumentTextIcon,
+  groups: [
+    { name: 'content', title: 'Content', default: true },
+    { name: 'media', title: 'Media' },
+    { name: 'seo', title: 'SEO' },
+  ],
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      group: 'content',
+      validation: (rule) => rule.required().max(120),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      group: 'content',
+      options: { source: 'title', maxLength: 96 },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      description: 'Short summary shown on cards and used for SEO fallback.',
+      type: 'text',
+      rows: 3,
+      group: 'content',
+      validation: (rule) => rule.required().max(220),
+    }),
+    defineField({
+      name: 'coverImage',
+      title: 'Cover image',
+      type: 'image',
+      group: 'media',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Gallery',
+      description: 'Extra photos shown in a gallery strip on the post.',
+      type: 'array',
+      group: 'media',
+      icon: ImagesIcon,
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt text',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'caption',
+              title: 'Caption',
+              type: 'string',
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{ type: 'author' }],
+      group: 'content',
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      group: 'content',
+      of: [defineArrayMember({ type: 'reference', to: [{ type: 'category' }] })],
+    }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      description: 'Show this post in the homepage-style featured slider.',
+      type: 'boolean',
+      group: 'content',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+      group: 'content',
+      initialValue: () => new Date().toISOString(),
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
+      group: 'content',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO title',
+      description: 'Overrides the page <title>. Falls back to the post title.',
+      type: 'string',
+      group: 'seo',
+      validation: (rule) => rule.max(70),
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO description',
+      description: 'Overrides the meta description. Falls back to the excerpt.',
+      type: 'text',
+      rows: 2,
+      group: 'seo',
+      validation: (rule) => rule.max(160),
+    }),
+  ],
+  preview: {
+    select: { title: 'title', media: 'coverImage', subtitle: 'excerpt' },
+  },
+})
