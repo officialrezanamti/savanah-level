@@ -1,7 +1,7 @@
 "use client";
 
 import { NextStudio } from "next-sanity/studio/client-component";
-import { StyleSheetManager } from 'styled-components'
+import { StyleSheetManager } from "styled-components";
 
 import config from "../../../sanity.config";
 

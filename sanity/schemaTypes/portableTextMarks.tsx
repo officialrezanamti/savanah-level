@@ -1,12 +1,19 @@
-import type {
-  BlockAnnotationProps,
-  BlockDecoratorProps,
-} from "sanity";
+import type { BlockAnnotationProps, BlockDecoratorProps } from "sanity";
 
 export const TextDirectionIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M4 6h16M4 12h12M4 18h16" fill="none" stroke="currentColor" strokeWidth="1.75" />
-    <path d="M20 9v6m0-6-2 2m2-2 2 2" fill="none" stroke="currentColor" strokeWidth="1.75" />
+    <path
+      d="M4 6h16M4 12h12M4 18h16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+    />
+    <path
+      d="M20 9v6m0-6-2 2m2-2 2 2"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+    />
   </svg>
 );
 
