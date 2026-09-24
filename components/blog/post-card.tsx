@@ -18,9 +18,9 @@ export function PostCard({ post, priority }: { post: PostCardType; priority?: bo
   return (
     <Link
       href={`/blog/${post.slug.current}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-lg"
+      className="group flex h-full mt-10 flex-col overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-lg"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+      <div className="relative aspect-16/10 overflow-hidden bg-secondary">
         {post.coverImage && (
           <Image
             src={urlFor(post.coverImage).width(640).height(400).url()}

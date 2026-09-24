@@ -109,7 +109,7 @@ export default async function BlogPage({
                       key={pageNumber}
                       href={`/blog?${new URLSearchParams({ ...(category ? { category } : {}), page: String(pageNumber) })}`}
                       aria-current={pageNumber === page ? "page" : undefined}
-                      className={`grid size-10 place-items-center rounded-full text-sm font-semibold ${pageNumber === page ? "bg-navy text-white" : "bg-secondary text-foreground hover:bg-secondary/70"}`}
+                      className={`grid size-10  place-items-center rounded-full text-sm font-semibold ${pageNumber === page ? "bg-navy text-white" : "bg-secondary text-foreground hover:bg-secondary/70"}`}
                     >
                       {pageNumber}
                     </Link>

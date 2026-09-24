@@ -38,6 +38,21 @@ const components: PortableTextComponents = {
         {children}
       </p>
     ),
+    left: ({ children }) => (
+      <p className="mt-5 text-left text-pretty text-base leading-relaxed text-muted-foreground">
+        {children}
+      </p>
+    ),
+    center: ({ children }) => (
+      <p className="mt-5 text-center text-pretty text-base leading-relaxed text-muted-foreground">
+        {children}
+      </p>
+    ),
+    right: ({ children }) => (
+      <p className="mt-5 text-right text-pretty text-base leading-relaxed text-muted-foreground">
+        {children}
+      </p>
+    ),
     blockquote: ({ children }) => (
       <blockquote className="mt-6 border-l-4 border-orange bg-secondary py-4 pl-5 pr-4 font-heading text-lg font-medium leading-relaxed text-foreground">
         {children}
@@ -72,6 +87,14 @@ const components: PortableTextComponents = {
     sub: ({ children }) => <sub>{children}</sub>,
     textColor: ({ children, value }) => (
       <span style={{ color: value?.color || undefined }}>{children}</span>
+    ),
+    textDirection: ({ children, value }) => (
+      <span
+        className="block w-full"
+        style={{ textAlign: value?.direction || undefined }}
+      >
+        {children}
+      </span>
     ),
     code: ({ children }) => (
       <code className="rounded-sm bg-secondary px-1.5 py-0.5 font-mono text-sm text-foreground">

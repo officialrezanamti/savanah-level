@@ -1,4 +1,16 @@
+import { ColorWheelIcon } from "@sanity/icons/ColorWheel";
+import { HighlightIcon } from "@sanity/icons/Highlight";
+import { LinkIcon } from "@sanity/icons/Link";
+import { TextIcon } from "@sanity/icons/Text";
 import { defineArrayMember, defineField, defineType } from "sanity";
+import {
+  HighlightDecorator,
+  SubscriptDecorator,
+  SuperscriptDecorator,
+  TextDirectionAnnotation,
+  TextDirectionIcon,
+  TextColorAnnotation,
+} from "./portableTextMarks";
 
 /**
  * Rich text body for blog posts: standard prose blocks plus inline
@@ -30,16 +42,31 @@ export const blockContentType = defineType({
           { title: "Underline", value: "underline" },
           { title: "Strike", value: "strike-through" },
           { title: "Inline code", value: "code" },
-          { title: "Highlight", value: "highlight" },
-          { title: "Superscript", value: "sup" },
-          { title: "Subscript", value: "sub" },
+          {
+            title: "Highlight",
+            value: "highlight",
+            icon: HighlightIcon,
+            component: HighlightDecorator,
+          },
+          {
+            title: "Superscript",
+            value: "sup",
+            icon: TextIcon,
+            component: SuperscriptDecorator,
+          },
+          {
+            title: "Subscript",
+            value: "sub",
+            icon: TextIcon,
+            component: SubscriptDecorator,
+          },
         ],
         annotations: [
           defineField({
             name: "link",
             title: "Link",
             type: "object",
-            icon: () => "🔗",
+            icon: LinkIcon,
             fields: [
               defineField({
                 name: "href",
@@ -63,6 +90,8 @@ export const blockContentType = defineType({
             name: "textColor",
             title: "Text color",
             type: "object",
+            icon: ColorWheelIcon,
+            components: { annotation: TextColorAnnotation },
             fields: [
               defineField({
                 name: "color",
@@ -76,6 +105,28 @@ export const blockContentType = defineType({
                     { title: "Green", value: "#3d8065" },
                     { title: "Blue", value: "#3478a8" },
                     { title: "Ink", value: "#263238" },
+                  ],
+                },
+              }),
+            ],
+          }),
+          defineField({
+            name: "textDirection",
+            title: "Text direction",
+            type: "object",
+            icon: TextDirectionIcon,
+            components: { annotation: TextDirectionAnnotation },
+            fields: [
+              defineField({
+                name: "direction",
+                title: "Direction",
+                type: "string",
+                options: {
+                  layout: "radio",
+                  list: [
+                    { title: "Left", value: "left" },
+                    { title: "Center", value: "center" },
+                    { title: "Right", value: "right" },
                   ],
                 },
               }),
