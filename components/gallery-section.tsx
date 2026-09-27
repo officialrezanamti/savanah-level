@@ -1,16 +1,16 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { gallery } from "@/data/gallery";
-import { Lightbox } from "@/components/lightbox";
+import { GalleryCoverflow } from "@/components/gallery-coverflow";
 
 const preview = gallery.slice(0, 7);
 
 export function GallerySection() {
   return (
-    <section id="gallery" className="scroll-mt-20 bg-background py-16 sm:py-24">
+    <section
+      id="gallery"
+      className="scroll-mt-20 overflow-hidden bg-background py-12 sm:py-16"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="reveal mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
           <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
@@ -25,40 +25,11 @@ export function GallerySection() {
           </p>
         </div>
 
-        <Lightbox images={preview}>
-          {(open) => (
-            <div className="reveal mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-              {preview.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={`group relative overflow-hidden rounded-2xl bg-secondary ${
-                    index === 0
-                      ? "col-span-2 lg:col-span-1 lg:row-span-2"
-                      : index === 3
-                        ? "col-span-2 lg:col-span-1 lg:row-span-2"
-                        : "aspect-4/3"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={(event) => open(index, event.currentTarget)}
-                    aria-label={`View ${item.alt}`}
-                    className="absolute inset-0 z-10 cursor-zoom-in"
-                  />
-                  <Image
-                    src={item.src || "/placeholder.svg"}
-                    alt={item.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </Lightbox>
+        <div className="reveal mt-8 sm:mt-10">
+          <GalleryCoverflow images={preview} />
+        </div>
 
-        <div className="reveal mt-10 flex justify-center">
+        <div className="reveal mt-8 flex justify-center">
           <Link
             href="/gallery"
             className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 font-heading text-sm font-bold text-background transition-colors hover:bg-orange"

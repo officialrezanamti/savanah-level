@@ -32,7 +32,7 @@ export function Logo({
         </span>
         <span
           className={cn(
-            'mt-1 text-[10px] font-semibold uppercase tracking-[0.18em]',
+            'mt-1 text-[11px] font-semibold uppercase tracking-[0.18em]',
             tone === 'light' ? 'text-white/60' : 'text-muted-foreground',
           )}
         >

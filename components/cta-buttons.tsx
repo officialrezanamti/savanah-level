@@ -7,7 +7,7 @@ import { useEstimateModal } from '@/components/estimate-modal'
 
 const sizes = {
   sm: 'h-9 px-4 text-sm gap-1.5',
-  md: 'h-11 px-5 text-[0.95rem] gap-2',
+  md: 'h-11 px-5 text-base gap-2',
   lg: 'h-13 px-7 text-base gap-2',
 }
 

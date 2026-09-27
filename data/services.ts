@@ -128,7 +128,7 @@ export const services: Service[] = [
       'App and Wi-Fi setup',
     ],
     pricing: [
-      { label: 'Google Nest Cameras', price: 'Starting at $120' },
+      { label: 'Google Nest Cameras', price: 'Starting at $145' },
       { label: 'Google Doorbells', price: 'Starting at $95' },
     ],
     pricingNote: TRAVEL_FEE_NOTE,

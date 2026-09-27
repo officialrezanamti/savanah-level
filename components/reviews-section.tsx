@@ -4,7 +4,7 @@ import { FeaturableReviews } from "@/components/featurable-reviews";
 
 export function ReviewsSection() {
   return (
-    <section id="reviews" className="scroll-mt-20 bg-secondary py-16 sm:py-24">
+    <section id="reviews" className="scroll-mt-20 bg-secondary py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="reveal mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
           <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">

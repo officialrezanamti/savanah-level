@@ -2,9 +2,9 @@ import { EstimateForm } from '@/components/estimate-form'
 
 export function ContactSection() {
   return (
-    <section id="contact" className="scroll-mt-20 bg-navy py-16 text-navy-foreground sm:py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2">
-        <div className="flex flex-col gap-6">
+    <section id="contact" className="scroll-mt-20 bg-navy py-12 text-navy-foreground sm:py-16">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12">
+        <div className="reveal flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-orange">
               Free Estimate
@@ -20,7 +20,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-card p-6 text-card-foreground shadow-2xl sm:p-8">
+        <div className="reveal rounded-3xl bg-card p-6 text-card-foreground shadow-2xl sm:p-8">
           <EstimateForm />
         </div>
       </div>

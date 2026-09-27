@@ -14,12 +14,12 @@ export function ServiceCard({
     return (
       <Link
         href={`/services/${service.slug}`}
-        className="group flex flex-col items-start gap-2 rounded-xl border border-navy/10 bg-white p-3 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-orange/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+        className="group flex flex-col items-start gap-2 rounded-xl border border-orange bg-white p-3 text-left shadow-[0_2px_10px_-2px_color-mix(in_oklab,var(--orange)_35%,transparent)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_-4px_color-mix(in_oklab,var(--orange)_45%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
       >
         <span className="grid size-9 place-items-center rounded-lg bg-navy/5 text-navy transition-colors duration-200 group-hover:bg-orange group-hover:text-orange-foreground">
           <ServiceIcon name={service.icon} className="size-5" />
         </span>
-        <span className="font-heading text-[0.8rem] font-bold leading-tight text-navy">
+        <span className="font-heading text-sm font-bold leading-tight text-navy">
           {service.title}
         </span>
       </Link>

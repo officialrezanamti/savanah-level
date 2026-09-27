@@ -9,6 +9,7 @@ import { ReviewsSection } from '@/components/reviews-section'
 import { ContactSection } from '@/components/contact-section'
 import { SiteFooter } from '@/components/site-footer'
 import { MobileCtaBar } from '@/components/mobile-cta-bar'
+import { DisplayMode } from '@/components/display-mode'
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
       </main>
       <SiteFooter />
       <MobileCtaBar />
+      <DisplayMode />
     </>
   )
 }
