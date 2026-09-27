@@ -68,7 +68,7 @@ export function EstimateForm() {
         }
         */
       }}
-      className="flex flex-col gap-4"
+      className="flex min-w-0 flex-col gap-4"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Full name" htmlFor="name">
@@ -79,7 +79,7 @@ export function EstimateForm() {
             required
             autoComplete="name"
             placeholder="Jesus Christ"
-            className="form-input border p-2 rounded-lg"
+            className="form-input w-full min-w-0 rounded-lg border p-2"
           />
         </Field>
         <Field label="Phone" htmlFor="phone">
@@ -90,7 +90,7 @@ export function EstimateForm() {
             required
             autoComplete="tel"
             placeholder="(912) 000-0000"
-            className="form-input border p-2 rounded-lg"
+            className="form-input w-full min-w-0 rounded-lg border p-2"
           />
         </Field>
       </div>
@@ -103,7 +103,7 @@ export function EstimateForm() {
           required
           autoComplete="email"
           placeholder="you@email.com"
-          className="form-input border p-2 rounded-lg"
+          className="form-input w-full min-w-0 rounded-lg border p-2"
         />
       </Field>
 
@@ -112,7 +112,7 @@ export function EstimateForm() {
           id="service"
           name="service"
           required
-          className="form-input border p-2 rounded-lg"
+          className="form-input w-full min-w-0 rounded-lg border p-2"
           defaultValue=""
         >
           <option value="" disabled>
@@ -133,7 +133,7 @@ export function EstimateForm() {
           name="details"
           rows={4}
           placeholder="Tell us a little about the job, and your ZIP code in the Savannah area."
-          className="form-input resize-none border p-2 rounded-lg"
+          className="form-input w-full min-w-0 resize-none rounded-lg border p-2"
         />
       </Field>
 
@@ -146,7 +146,7 @@ export function EstimateForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-orange px-6 font-heading text-base font-bold text-orange-foreground transition-all hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-1 inline-flex h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-orange px-6 font-heading text-base font-bold text-orange-foreground transition-all hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isSubmitting ? (
           <Loader2 className="size-5 animate-spin" aria-hidden="true" />
