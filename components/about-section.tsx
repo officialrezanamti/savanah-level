@@ -4,8 +4,8 @@ import { CallButton, EstimateButton } from '@/components/cta-buttons'
 
 export function AboutSection() {
   return (
-    <section className=" py-16 sm:py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
+    <section className="py-12 sm:py-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 lg:gap-12 sm:px-6 lg:grid-cols-2">
         <div className="reveal order-2 lg:order-1">
           <img
             src="/gallery/using-the-stud-finder.webp"

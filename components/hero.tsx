@@ -34,6 +34,9 @@ export function Hero() {
             <span className="font-heading text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
               {site.name}
             </span>
+            <span className="font-heading text-base font-bold uppercase tracking-wide text-white">
+              Commercial-Residential
+            </span>
             <span className="text-sm font-medium text-white/70">
               {site.positioning}
             </span>
@@ -54,7 +57,7 @@ export function Hero() {
             <span className="inline-flex w-fit items-center rounded-full border border-blue/40 bg-white md:bg-blue/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue">
               Contact Us Today To Get A Free Estimate
             </span>
-            <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+            <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[3rem]">
               Savannah Level is a Fully Licensed &amp; Insured Handyman Company with 27+ Years of Experience Serving Savannah, GA
             </h1>
             <p className="max-w-md text-pretty text-base leading-relaxed text-white/75">
