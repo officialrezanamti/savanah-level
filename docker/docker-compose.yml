@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        NEXT_PUBLIC_SANITY_DATASET: ${NEXT_PUBLIC_SANITY_DATASET:?Set NEXT_PUBLIC_SANITY_DATASET in .env}
+        NEXT_PUBLIC_SANITY_PROJECT_ID: ${NEXT_PUBLIC_SANITY_PROJECT_ID:?Set NEXT_PUBLIC_SANITY_PROJECT_ID in .env}
+        NEXT_PUBLIC_SANITY_API_VERSION: ${NEXT_PUBLIC_SANITY_API_VERSION:-2025-01-01}
+    ports:
+      - "3000:3000"
+    env_file:
+      - path: ../.env
+        required: false
+    restart: unless-stopped
