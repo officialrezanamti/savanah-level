@@ -3,6 +3,8 @@ node_modules
 out
 .git
 .gitignore
+.agents
+.claude
 .env*
 !.env.example
 README.md
