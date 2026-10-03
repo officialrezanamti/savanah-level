@@ -1,12 +1,14 @@
+import { publicConfig } from "@/lib/public-config";
+
 export const site = {
   name: 'Savannah Level',
   tagline: 'Quality Service Is Our Best Advertising',
   positioning: 'Home Services · Home Improvement · Installation & Mounting',
-  phone: '912-901-7144',
-  phoneHref: 'tel:9129017144',
-  email: 'Savlevel@gmail.com',
+  phone: publicConfig.phone,
+  phoneHref: `tel:${publicConfig.phone.replace(/\D/g, "")}`,
+  email: publicConfig.email,
   contactName: 'Shawn Maddi',
-  address: 'E 40th St, Savannah, GA',
+  address: publicConfig.address,
   areas: 'Serving Savannah, Georgetown, Pooler, and Surrounding Areas!',
   discount:
     '10% Discount for Veterans, Active-Duty Military, Seniors & Retirees',

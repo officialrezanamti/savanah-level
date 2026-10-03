@@ -1,6 +1,7 @@
 "use client";
 
 import { FeaturableReviews } from "@/components/featurable-reviews";
+import { publicConfig } from "@/lib/public-config";
 
 export function ReviewsSection() {
   return (
@@ -28,7 +29,7 @@ export function ReviewsSection() {
 
         <div className="mt-8 flex justify-center">
           <a
-            href="https://www.google.com/maps/place/Savannah+Level/@32.062721,-81.20604,9z/data=!4m6!3m5!1s0x8fbf57004b808cd5:0xf9ab3f462397e678!8m2!3d32.062721!4d-81.2060396!16s%2Fg%2F11x6dp92yr?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+            href={publicConfig.googleReviewsUrl}
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-11 items-center justify-center rounded-lg border border-navy px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
