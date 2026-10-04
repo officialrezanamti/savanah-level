@@ -3,8 +3,9 @@ import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { client } from "@/sanity/lib/client";
 import { allPostSlugsQuery } from "@/sanity/lib/queries";
+import { publicConfig } from "@/lib/public-config";
 
-export const SITE_URL = "https://savlevel.com";
+export const SITE_URL = publicConfig.siteUrl;
 
 const routes: MetadataRoute.Sitemap = [
   { path: "/", priority: 1.0, changeFrequency: "yearly" as const },

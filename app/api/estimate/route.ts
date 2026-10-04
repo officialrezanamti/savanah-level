@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
+const resendFromEmail = process.env.RESEND_FROM_EMAIL;
 
 function escapeHtml(value: string) {
   return value
@@ -16,7 +17,7 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
-  if (!resend) {
+  if (!resend || !resendFromEmail) {
     return Response.json(
       {
         error:
@@ -66,7 +67,7 @@ export async function POST(request: Request) {
   try {
     const { error } = await resend.emails.send(
       {
-        from: "Savannah Level Estimates <onboarding@resend.dev>",
+        from: `Savannah Level Estimates <${resendFromEmail}>`,
         to: [site.email],
         replyTo: email,
         subject: `New estimate request from ${name}`,
