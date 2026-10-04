@@ -1,16 +1,19 @@
-import { Check } from 'lucide-react'
-import { about } from '@/data/site'
-import { CallButton, EstimateButton } from '@/components/cta-buttons'
+import { Check } from "lucide-react";
+import Image from "next/image";
+import { about } from "@/data/site";
+import { CallButton, EstimateButton } from "@/components/cta-buttons";
 
 export function AboutSection() {
   return (
     <section className="py-12 sm:py-16">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 lg:gap-12 sm:px-6 lg:grid-cols-2">
-        <div className="reveal order-2 lg:order-1">
-          <img
+        <div className="reveal order-2 relative aspect-4/3 lg:order-1">
+          <Image
             src="/gallery/using-the-stud-finder.webp"
             alt="A clean, level TV installation completed by Savannah Level"
-            className="aspect-4/3 w-full rounded-3xl object-cover shadow-xl"
+            fill
+            sizes="(min-width: 1280px) 592px, (min-width: 1024px) 50vw, 100vw"
+            className="rounded-3xl object-cover shadow-xl"
           />
         </div>
 
@@ -50,5 +53,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

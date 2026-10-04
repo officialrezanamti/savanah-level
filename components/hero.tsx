@@ -1,13 +1,17 @@
-import { site } from '@/data/site'
-import { CallButton, EstimateButton } from '@/components/cta-buttons'
-import { ServiceGrid } from '@/components/service-grid'
+import { site } from "@/data/site";
+import { CallButton, EstimateButton } from "@/components/cta-buttons";
+import { ServiceGrid } from "@/components/service-grid";
+import Image from "next/image";
 
 export function Hero() {
   return (
     <section id="home" className="relative isolate overflow-hidden bg-navy">
-      <img
+      <Image
         src="/images/savannah-river-bridge.jpg"
         alt="The Talmadge Memorial Bridge over the Savannah River with a riverboat docked in the foreground"
+        fill
+        sizes="100vw"
+        preload
         className="absolute lg:left-170 inset-0 -z-10 size-full object-cover"
       />
       <div
@@ -58,7 +62,8 @@ export function Hero() {
               Contact Us Today To Get A Free Estimate
             </span>
             <h1 className="max-w-xl text-balance font-heading text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[3rem]">
-              Savannah Level is a Fully Licensed &amp; Insured Handyman Company with 27+ Years of Experience Serving Savannah, GA
+              Savannah Level is a Fully Licensed &amp; Insured Handyman Company
+              with 27+ Years of Experience Serving Savannah, GA
             </h1>
             <p className="max-w-md text-pretty text-base leading-relaxed text-white/75">
               {site.areas}
@@ -74,5 +79,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
