@@ -1,41 +1,58 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ReactGoogleReviews } from "react-google-reviews";
-import { publicConfig } from "@/lib/public-config";
+import {
+  ReactGoogleReviews,
+  type ReactGoogleReview,
+} from "react-google-reviews";
 
-// Render the production Featurable widget through the library's v1 API adapter.
-export function FeaturableReviews() {
-  const [maxitem, setMaxitem] = useState({maxitem: 3 });
+type ReviewsData = {
+  averageRating: number;
+  totalReviewCount: number;
+  profileUrl: string;
+  reviews: ReactGoogleReview[];
+};
+
+export function GoogleReviews() {
+  const [maxItems, setMaxItems] = useState(3);
+  const [data, setData] = useState<ReviewsData | null>();
+
   useEffect(() => {
-    if (window.innerWidth < 640) {
-      setMaxitem({  maxitem: 1 });
-    } else {
-      setMaxitem({ maxitem: 3 });
-    }
+    if (window.innerWidth < 640) setMaxItems(1);
+    fetch("/api/reviews")
+      .then((response) => (response.ok ? response.json() : null))
+      .then(setData)
+      .catch(() => setData(null));
   }, []);
+
+  // The library copies `reviews` into state on mount, so render only once data has arrived.
+  if (data === null) return null;
+  if (!data) return <div className="min-h-88 sm:min-h-72" />;
+
   return (
     <>
       <ReactGoogleReviews
         layout="badge"
-        featurableId={publicConfig.featurableWidgetId}
-        
+        reviews={data.reviews}
+        averageRating={data.averageRating}
+        totalReviewCount={data.totalReviewCount}
+        profileUrl={data.profileUrl}
       />
 
-      <div className="mt-6 `min-h-88 sm:min-h-72">
+      <div className="mt-6 min-h-88 sm:min-h-72">
         <ReactGoogleReviews
           layout="carousel"
-          featurableId={publicConfig.featurableWidgetId}
-          apiBaseUrl={publicConfig.featurableApiUrl}
-          widgetVersion="v1"
+          reviews={data.reviews}
+          averageRating={data.averageRating}
+          totalReviewCount={data.totalReviewCount}
           theme="light"
-          maxItems={maxitem.maxitem}
+          maxItems={maxItems}
           carouselAutoplay
           showDots={false}
+          hideEmptyReviews
           accessibility
           brandName="Savannah Level"
           structuredData
-          
         />
       </div>
     </>

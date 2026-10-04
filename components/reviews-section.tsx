@@ -1,6 +1,6 @@
 "use client";
 
-import { FeaturableReviews } from "@/components/featurable-reviews";
+import { GoogleReviews } from "@/components/google-reviews";
 import { publicConfig } from "@/lib/public-config";
 
 export function ReviewsSection() {
@@ -24,7 +24,7 @@ export function ReviewsSection() {
         </div>
 
         <div className="reveal mx-auto mt-8 max-w-6xl overflow-hidden">
-          <FeaturableReviews />
+          <GoogleReviews />
         </div>
 
         <div className="mt-8 flex justify-center">
