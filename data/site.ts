@@ -12,6 +12,7 @@ export const site = {
   areas: 'Serving Savannah, Georgetown, Pooler, and Surrounding Areas!',
   discount:
     '10% Discount for Veterans, Active-Duty Military, Seniors & Retirees',
+  poweredBy: { label: 'Nemati AI LLC', href: 'https://nemati.ai' },
 }
 
 export const nav = [

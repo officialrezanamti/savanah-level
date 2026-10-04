@@ -95,7 +95,7 @@ export default async function ServicePage({
                       <span className="text-sm font-medium text-foreground">
                         {item.label}
                       </span>
-                      <span className="whitespace-nowrap text-sm font-bold text-navy">
+                      <span className="whitespace-nowrap text-sm font-bold text-navy dark:text-blue">
                         {item.price}
                       </span>
                     </li>

@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
+  colorScheme: 'light dark',
   themeColor: '#16233a',
 }
 
@@ -62,7 +62,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`light bg-background ${archivo.variable} ${inter.variable}`}
+      className={`bg-background ${archivo.variable} ${inter.variable}`}
     >
       <body className="font-sans antialiased">
         <EstimateModalProvider>{children}</EstimateModalProvider>
