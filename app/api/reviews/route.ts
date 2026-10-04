@@ -1,19 +1,10 @@
-import type { ReactGoogleReview } from "react-google-reviews";
-
-// ponytail: 1h cache keeps calls under Google's 1,000/month free tier; Google's terms discourage caching reviews.
-const REVIEWS_CACHE_SECONDS = 3600;
+// ponytail: 1h cache keeps calls inside Google's free monthly tier.
+const RATING_CACHE_SECONDS = 3600;
 
 type Place = {
   rating?: number;
   userRatingCount?: number;
   googleMapsUri?: string;
-  reviews?: {
-    name: string;
-    rating: number;
-    text?: { text: string };
-    authorAttribution: { displayName: string; photoUri?: string };
-    publishTime: string;
-  }[];
 };
 
 function requiredEnv(name: string) {
@@ -32,9 +23,9 @@ export async function GET() {
     {
       headers: {
         "X-Goog-Api-Key": requiredEnv("GOOGLE_PLACES_API_KEY"),
-        "X-Goog-FieldMask": "rating,userRatingCount,googleMapsUri,reviews",
+        "X-Goog-FieldMask": "rating,userRatingCount,googleMapsUri",
       },
-      next: { revalidate: REVIEWS_CACHE_SECONDS },
+      next: { revalidate: RATING_CACHE_SECONDS },
     },
   );
 
@@ -46,23 +37,14 @@ export async function GET() {
   }
 
   const place: Place = await response.json();
-  const reviews: ReactGoogleReview[] = (place.reviews ?? []).map((review) => ({
-    reviewId: review.name,
-    reviewer: {
-      profilePhotoUrl: review.authorAttribution.photoUri ?? "",
-      displayName: review.authorAttribution.displayName,
-      isAnonymous: false,
-    },
-    starRating: review.rating,
-    comment: review.text?.text ?? "",
-    createTime: review.publishTime,
-    updateTime: review.publishTime,
-  }));
+  if (place.rating == null || place.userRatingCount == null) {
+    console.error(`Google Places returned no rating for ${placeId}`);
+    return Response.json({ error: "Reviews are unavailable." }, { status: 502 });
+  }
 
   return Response.json({
     averageRating: place.rating,
     totalReviewCount: place.userRatingCount,
     profileUrl: place.googleMapsUri,
-    reviews,
   });
 }
