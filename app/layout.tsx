@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Inter } from 'next/font/google'
 import { EstimateModalProvider } from '@/components/estimate-modal'
+import { themeScript } from '@/lib/theme'
 import './globals.css'
 
 const archivo = Archivo({
@@ -62,8 +63,12 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`bg-background ${archivo.variable} ${inter.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans antialiased">
         <EstimateModalProvider>{children}</EstimateModalProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

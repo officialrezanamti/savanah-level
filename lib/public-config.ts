@@ -27,4 +27,12 @@ export const publicConfig = {
     process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL,
     "NEXT_PUBLIC_GOOGLE_REVIEWS_URL",
   ),
+  featurableWidgetId: requiredPublicEnv(
+    process.env.NEXT_PUBLIC_FEATURABLE_WIDGET_ID,
+    "NEXT_PUBLIC_FEATURABLE_WIDGET_ID",
+  ),
+  featurableApiUrl: requiredPublicEnv(
+    process.env.NEXT_PUBLIC_FEATURABLE_API_URL,
+    "NEXT_PUBLIC_FEATURABLE_API_URL",
+  ),
 };
