@@ -32,7 +32,7 @@ export function ReviewsSection() {
             href={publicConfig.googleReviewsUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-navy px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-navy px-5 py-2.5 text-sm font-semibold text-navy dark:border-white/60 dark:text-white transition-colors hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
           >
             See all Google reviews
           </a>

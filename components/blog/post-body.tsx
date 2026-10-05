@@ -108,7 +108,7 @@ const components: PortableTextComponents = {
         rel={
           value?.href?.startsWith("http") ? "noopener noreferrer" : undefined
         }
-        className="font-medium text-blue underline underline-offset-2 hover:text-navy"
+        className="font-medium text-blue underline underline-offset-2 hover:text-navy dark:hover:text-white"
       >
         {children}
       </Link>
