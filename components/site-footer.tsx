@@ -3,6 +3,7 @@ import { nav, site } from '@/data/site'
 import { services } from '@/data/services'
 import { Logo } from '@/components/logo'
 import { publicConfig } from '@/lib/public-config'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export function SiteFooter() {
   return (
@@ -69,17 +70,20 @@ export function SiteFooter() {
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <p>Licensed &amp; insured &middot; Serving Savannah, GA</p>
-          <p className="text-[11px] text-white/40">
-            Powered by{' '}
-            <a
-              href={site.poweredBy.href}
-              target="_blank"
-              rel="noopener"
-              className="underline-offset-2 transition-colors hover:text-white/70 hover:underline"
-            >
-              {site.poweredBy.label}
-            </a>
-          </p>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <p className="text-[11px] text-white/40">
+              Powered by{' '}
+              <a
+                href={site.poweredBy.href}
+                target="_blank"
+                rel="noopener"
+                className="underline-offset-2 transition-colors hover:text-white/70 hover:underline"
+              >
+                {site.poweredBy.label}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
