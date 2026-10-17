@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     'handyman Savannah',
   ],
   generator: 'v0.app',
+  verification: {
+    google: 'EQd60WM8pQTECnrYlXIvJzXCS_-mo8pT8B90gP2p3Xo',
+  },
   openGraph: {
     title: 'Savannah Level | Home Services in Savannah, GA',
     description:
