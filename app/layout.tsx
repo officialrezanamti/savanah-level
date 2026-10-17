@@ -16,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://savannahlevel.com'),
+  metadataBase: new URL('https://savlevel.com'),
   title:
     'Savannah Level | TV Mounting & Appliance Installation in Savannah, GA',
   description:
